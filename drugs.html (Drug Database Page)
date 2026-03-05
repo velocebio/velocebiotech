@@ -3,31 +3,37 @@
 <head>
 <title>Drug Database</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
 
 <body>
 
 <header>
-<h1>Global Drug Database</h1>
+<h1>Drug Database</h1>
 </header>
 
-<section class="card">
+<section style="padding:60px;text-align:center;">
 
-<h3>Example Medicines</h3>
+<input type="text" id="search" placeholder="Search medicine..."
+onkeyup="searchDrug()">
 
-<ul>
-<li>Paracetamol (Acetaminophen)</li>
+<ul id="drugList">
+
+<li>Paracetamol</li>
 <li>Ibuprofen</li>
+<li>Aspirin</li>
 <li>Amoxicillin</li>
 <li>Azithromycin</li>
-<li>Metformin</li>
-<li>Atorvastatin</li>
-<li>Omeprazole</li>
-<li>Aspirin</li>
-<li>Insulin</li>
-<li>Losartan</li>
 <li>Ciprofloxacin</li>
 <li>Doxycycline</li>
+<li>Metformin</li>
+<li>Insulin</li>
+<li>Omeprazole</li>
+<li>Atorvastatin</li>
+<li>Losartan</li>
+<li>Amlodipine</li>
+<li>Warfarin</li>
+<li>Prednisone</li>
 
 </ul>
 
