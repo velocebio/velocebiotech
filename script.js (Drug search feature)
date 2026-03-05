@@ -1,0 +1,21 @@
+function searchDrug() {
+
+let input = document.getElementById("search").value.toLowerCase()
+
+let list = document.getElementById("drugList").getElementsByTagName("li")
+
+for(let i=0;i<list.length;i++){
+
+let text = list[i].innerText.toLowerCase()
+
+if(text.includes(input)){
+list[i].style.display=""
+}
+
+else{
+list[i].style.display="none"
+}
+
+}
+
+}
