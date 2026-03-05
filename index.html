@@ -1,57 +1,321 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Veloce Biotech</title>
+    <!-- ================= SEO META TAGS ================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Veloce Biotechnology - Engineering Life with Precision. AI-powered biology, gene editing, and next-generation therapeutics.">
+    <meta name="keywords" content="Biotechnology, Gene Editing, CRISPR, AI Drug Discovery, Pharma, Genomic Engineering">
+    <meta name="author" content="Veloce Biotechnology">
+    <title>Veloce Biotechnology</title>
+
+    <!-- ================= GOOGLE FONT ================= -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- ================= CSS ================= -->
     <style>
-        body {
+        :root {
+            --bg: #0a0f1f;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --emerald: #10b981;
+            --blue: #00d4ff;
+            --text: #e2e8f0;
+        }
+
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0f172a;
-            color: white;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ================= PARTICLE BACKGROUND ================= */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* ================= NAVBAR ================= */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 10%;
+            position: fixed;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            background: rgba(10,15,31,0.7);
+        }
+
+        nav h2 {
+            color: var(--emerald);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--blue);
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 0 20px;
         }
-        header {
-            padding: 60px;
-            background: linear-gradient(to right, #0ea5e9, #22c55e);
+
+        .hero h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--emerald), var(--blue));
+            -webkit-background-clip: text;
+            color: transparent;
         }
-        h1 {
-            font-size: 50px;
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            max-width: 600px;
         }
-        section {
-            padding: 40px;
+
+        .btn-group {
+            margin-top: 30px;
         }
+
         .btn {
-            padding: 12px 25px;
-            background-color: #22c55e;
-            color: white;
+            padding: 12px 28px;
+            margin: 10px;
+            border-radius: 30px;
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: var(--emerald);
+        }
+
+        .secondary {
+            background: var(--blue);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        /* ================= SECTIONS ================= */
+        section {
+            padding: 100px 10%;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--blue);
+        }
+
+        /* ================= GLASS CARDS ================= */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--emerald);
+        }
+
+        /* ================= TIMELINE ================= */
+        .timeline {
+            border-left: 2px solid var(--emerald);
+            padding-left: 20px;
+        }
+
+        .timeline div {
+            margin-bottom: 20px;
+        }
+
+        /* ================= CONTACT FORM ================= */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+        }
+
+        input, textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media(max-width:768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            nav ul {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Veloce Biotech</h1>
-    <p>Accelerating Gene Editing & AI-Driven Drug Discovery</p>
-    <button class="btn">Learn More</button>
-</header>
+<canvas id="particles"></canvas>
 
-<section>
-    <h2>Our Mission</h2>
-    <p>To revolutionize biotechnology using advanced gene editing and artificial intelligence to create precision medicines for the future.</p>
+<!-- ================= NAVIGATION ================= -->
+<nav>
+    <h2>Veloce Biotechnology</h2>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tech">Technology</a></li>
+        <li><a href="#pipeline">Pipeline</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+    <h1>Engineering Life with Precision</h1>
+    <p>AI-Powered Biology. Next-Generation Gene Editing. Transformative Therapeutics.</p>
+    <div class="btn-group">
+        <button class="btn primary">Explore Technology</button>
+        <button class="btn secondary">Partner With Us</button>
+    </div>
 </section>
 
-<section>
-    <h2>Research Areas</h2>
-    <p>🧬 Gene Editing | 🤖 AI Biology | 💊 Drug Discovery | 🧪 Synthetic Biology</p>
+<!-- ================= ABOUT ================= -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>Accelerating biological breakthroughs through AI-driven genomic engineering and advanced pharmaceutical innovation to redefine future healthcare.</p>
 </section>
 
-<section>
+<!-- ================= TECHNOLOGY ================= -->
+<section id="tech">
+    <h2>Technology Platforms</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Gene Editing Platform</h3>
+            <p>Advanced CRISPR tools for precise genomic engineering.</p>
+        </div>
+        <div class="card">
+            <h3>AI Biology Engine</h3>
+            <p>Machine learning models accelerating computational drug discovery.</p>
+        </div>
+        <div class="card">
+            <h3>Pharmaceutical Pipeline</h3>
+            <p>End-to-end therapeutic development and translational science.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PIPELINE ================= -->
+<section id="pipeline">
+    <h2>Research & Therapeutic Areas</h2>
+    <div class="timeline">
+        <div><strong>Oncology</strong> – Precision targeted therapies</div>
+        <div><strong>Rare Diseases</strong> – Genetic correction platforms</div>
+        <div><strong>Immunotherapy</strong> – Immune system engineering</div>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
     <h2>Contact Us</h2>
-    <p>Email: info@velocebiotech.com</p>
+    <form>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button class="btn primary">Submit</button>
+    </form>
 </section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    © 2026 Veloce Biotechnology. All Rights Reserved.
+</footer>
+
+<!-- ================= PARTICLE JS ================= -->
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+    particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*2,
+        d: Math.random()*1
+    });
+}
+
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="#00d4ff";
+    particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
+        ctx.fill();
+    });
+    update();
+}
+
+function update(){
+    particles.forEach(p=>{
+        p.y += p.d;
+        if(p.y > canvas.height){
+            p.y = 0;
+        }
+    });
+}
+
+setInterval(draw,33);
+</script>
 
 </body>
 </html>
