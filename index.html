@@ -1,265 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veloce Biotechnology | Making Biology Beautiful!</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.2.4/dist/kute.min.js"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                navy: { 900: '#030712', 950: '#010309' },
-                emerald: { 400: '#4ade80', 500: '#10b981' },
-                blue: { 400: '#60a5fa', 500: '#3b82f6' },
-              },
-              fontFamily: { 'cute': ['"Fredoka"', 'sans-serif'] },
-            }
-          }
-        }
-    </script>
-    
-    <style>
-        body { font-family: 'Fredoka', sans-serif; background-color: #030712; overflow-x: hidden; }
-
-        /* --- THE CUTE BACKGROUND --- */
-        #bg-canvas {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -2;
-            background: linear-gradient(135deg, #030712 0%, #0c1a3b 100%);
-        }
-        .blob {
-            position: absolute;
-            fill: #10b981; /* Default to Emerald */
-            opacity: 0.15;
-            filter: blur(15px);
-            animation: blob-float 30s infinite ease-in-out;
-        }
-
-        @keyframes blob-float {
-            0%, 100% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(150px, -100px) scale(1.1); }
-            66% { transform: translate(-100px, 150px) scale(0.9); }
-        }
-
-        /* Continuous Rotating DNA */
-        .dna-icon-active {
-            animation: rotate-dna 1.5s linear infinite;
-        }
-        @keyframes rotate-dna {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* --- CUTE ANIMATED LOGO --- */
-        .logo-helix {
-            stroke: #4ade80; /* Emerald */
-            fill: none;
-            stroke-width: 3;
-            stroke-linecap: round;
-        }
-        .logo-bond {
-            stroke: #60a5fa; /* Blue */
-            stroke-width: 2;
-            opacity: 0.5;
-        }
-
-        /* Glass Cards (Playful Version) */
-        .cute-glass {
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(8px);
-            border: 3px solid rgba(16, 185, 129, 0.15);
-            border-radius: 30px; /* Big round corners for "cute" */
-            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .cute-glass:hover {
-            border-color: #3b82f6;
-            transform: translateY(-10px) rotate(2deg);
-            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.2);
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Veloce Biotechnology</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body class="text-slate-200 antialiased">
 
-    <div id="bg-canvas">
-        <svg viewBox="0 0 1000 1000" class="blob" id="blob1" style="width: 700px; top: -100px; left: -100px;">
-            <path id="shape1" d="M720,290Q950,500,720,710Q490,920,280,710Q70,500,280,290Q490,80,720,290Z"></path>
-            <path id="shape2" style="visibility: hidden;" d="M685,253Q920,500,685,747Q450,994,225,747Q0,500,225,253Q450,6,685,253Z"></path>
-        </svg>
-        <svg viewBox="0 0 1000 1000" class="blob" id="blob2" style="width: 600px; bottom: -100px; right: -100px; fill: #3b82f6;">
-            <path id="shape3" d="M720,290Q950,500,720,710Q490,920,280,710Q70,500,280,290Q490,80,720,290Z"></path>
-        </svg>
-    </div>
+<body>
 
-    <nav class="fixed w-full z-50 px-6 py-4 backdrop-blur-sm border-b-2 border-slate-800">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <svg width="40" height="40" viewBox="0 0 100 100" class="logo-helix-container">
-                    <path class="logo-helix" d="M 30 10 C 30 40, 70 60, 70 90"></path>
-                    <path class="logo-helix" d="M 70 10 C 70 40, 30 60, 30 90"></path>
-                    <line class="logo-bond" x1="30" y1="20" x2="70" y2="20"></line>
-                    <line class="logo-bond" x1="50" y1="35" x2="50" y2="35"></line> <line class="logo-bond" x1="70" y1="50" x2="30" y2="50"></line>
-                    <line class="logo-bond" x1="30" y1="80" x2="70" y2="80"></line>
-                </svg>
-                <span class="text-3xl font-extrabold tracking-tighter text-white">VELOCE<span class="text-emerald-400">.</span>BIO</span>
-            </div>
-            <div class="hidden md:flex gap-8 text-sm font-semibold nav-links">
-                <a href="#about" class="hover:text-emerald-400 hover:scale-110 transition">About</a>
-                <a href="#technology" class="hover:text-emerald-400 hover:scale-110 transition">Tech</a>
-                <a href="#pipeline" class="hover:text-emerald-400 hover:scale-110 transition">Pipeline</a>
-                <a href="#contact" class="hover:text-emerald-400 hover:scale-110 transition">Partners</a>
-                <a href="#" class="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full text-navy-900 font-bold hover:shadow-lg hover:shadow-emerald-500/50 transition duration-300 transform hover:-translate-y-1">Say Hello!</a>
-            </div>
-        </div>
-    </nav>
+<header>
+<h1>🧬 Veloce Biotechnology</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="biotechnology.html">Biotechnology</a>
+<a href="pharmaceuticals.html">Pharmaceuticals</a>
+<a href="drugs.html">Drug Database</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
 
-    <section class="min-h-screen flex items-center justify-center pt-28 px-6 text-center">
-        <div class="max-w-4xl hero-content">
-            <div class="inline-block px-5 py-1.5 mb-8 border-2 border-blue-500/40 rounded-full bg-blue-500/10 text-blue-400 text-sm font-bold tracking-wide uppercase pulse-tag">
-                Welcome to the Future of Fun Science!
-            </div>
-            <h1 class="text-6xl md:text-8xl font-extrabold text-white mb-8 leading-none tracking-tight">
-                Engineering Life with <span class="bg-clip-text text-transparent bg-gradient-to-br from-emerald-300 to-blue-400">Joy</span>!
-            </h1>
-            <p class="text-2xl text-slate-300 mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
-                AI-Powered Biology. Next-Generation Gene Editing. Transformative Therapeutics—and we make it look easy!
-            </p>
-            <div class="flex flex-col md:flex-row gap-5 justify-center hero-buttons">
-                <a href="#technology" class="px-10 py-5 bg-white text-navy-950 font-bold rounded-full text-lg hover:bg-emerald-400 transition transform hover:scale-110 hover:rotate-3">Get Curious</a>
-                <a href="#contact" class="px-10 py-5 border-2 border-slate-700 font-bold rounded-full text-lg hover:bg-slate-800 transition transform hover:scale-105">Let's Team Up</a>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+<h2>Accelerating the Future of Medicine</h2>
+<p>
+Biotechnology, Artificial Intelligence, and Pharmaceutical Innovation
+working together to develop next-generation therapeutics.
+</p>
+</section>
 
-    <section id="about" class="py-32 px-6 max-w-5xl mx-auto text-center about-section">
-        <i data-lucide="sparkles" class="text-blue-400 mx-auto w-16 h-16 mb-8 sparkles-icon"></i>
-        <h2 class="text-5xl font-extrabold text-white mb-6">Our Little Mission</h2>
-        <p class="text-2xl text-slate-400 font-medium leading-relaxed">
-            We’re accelerating biological breakthroughs through AI and gene engineering to create a future where everyone is healthier and happier.
-        </p>
-    </section>
+<section class="grid">
 
-    <section id="technology" class="py-32 px-6 max-w-7xl mx-auto tech-section">
-        <div class="text-center mb-20">
-            <h2 class="text-5xl font-extrabold text-white mb-4">The Magic Toolbox</h2>
-            <p class="text-xl text-slate-400 font-medium">Too many incredible technologies!</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-10 tech-grid">
-            <div class="cute-glass p-10 text-center">
-                <i data-lucide="dna" class="text-emerald-400 mb-8 w-16 h-16 mx-auto dna-icon-active"></i>
-                <h3 class="text-3xl font-bold text-white mb-5">Gene Editing</h3>
-                <p class="text-slate-400 font-medium text-lg">CRISPR tools designed for perfect genomic engineering—like cosmic molecular scissors!</p>
-            </div>
-            <div class="cute-glass p-10 text-center">
-                <i data-lucide="cpu" class="text-blue-400 mb-8 w-16 h-16 mx-auto brain-icon"></i>
-                <h3 class="text-3xl font-bold text-white mb-5">AI Biology</h3>
-                <p class="text-slate-400 font-medium text-lg">Machine learning models trained to solve biology puzzles faster than ever.</p>
-            </div>
-            <div class="cute-glass p-10 text-center">
-                <i data-lucide="heart" class="text-emerald-400 mb-8 w-16 h-16 mx-auto heart-icon"></i>
-                <h3 class="text-3xl font-bold text-white mb-5">Therapeutics</h3>
-                <p class="text-slate-400 font-medium text-lg">Creating pipelines that bring medicine from the computer screen to the clinic!</p>
-            </div>
-        </div>
-    </section>
+<div class="card">
+<h3>Biotechnology</h3>
+<p>Gene editing, CRISPR engineering, and genomic medicine.</p>
+</div>
 
-    <section id="pipeline" class="py-32 bg-slate-900/50 border-y-2 border-slate-800 px-6 pipeline-section">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-5xl font-extrabold text-white mb-20 text-center">The Journey So Far...</h2>
-            
-            <div class="relative space-y-12 pl-12 border-l-4 border-emerald-500 pipeline-line">
-                <div class="relative pipeline-item">
-                    <div class="absolute -left-[54px] top-0 w-8 h-8 bg-gradient-to-br from-emerald-400 to-blue-400 rounded-full border-4 border-navy-950 node-pulse"></div>
-                    <div class="cute-glass p-6 w-fit hover:rotate-0">
-                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Discovery</span>
-                        <h4 class="text-xl font-bold text-white">VB-101: Smart CRISPR Scissors</h4>
-                    </div>
-                </div>
-                <div class="relative pipeline-item">
-                    <div class="absolute -left-[54px] top-0 w-8 h-8 bg-slate-700 rounded-full border-4 border-navy-950 node-pulse"></div>
-                    <div class="cute-glass p-6 w-fit hover:rotate-0">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Development</span>
-                        <h4 class="text-xl font-bold text-white">VB-203: AI Protein Folder</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="card">
+<h3>AI Drug Discovery</h3>
+<p>Machine learning models accelerating therapeutic development.</p>
+</div>
 
-    <section id="contact" class="py-32 px-6 max-w-xl mx-auto text-center contact-section">
-        <h2 class="text-5xl font-extrabold text-white mb-10">Say Hello!</h2>
-        <form class="space-y-5 cute-glass p-8 hover:scale-100 hover:rotate-0">
-            <input type="text" placeholder="Your Name" class="w-full bg-slate-800/60 border-2 border-slate-700 p-4 rounded-xl focus:outline-none focus:border-emerald-500 text-white font-medium">
-            <input type="email" placeholder="Your Awesome Email" class="w-full bg-slate-800/60 border-2 border-slate-700 p-4 rounded-xl focus:outline-none focus:border-emerald-500 text-white font-medium">
-            <textarea placeholder="Tell us about your breakthrough!" rows="4" class="w-full bg-slate-800/60 border-2 border-slate-700 p-4 rounded-xl focus:outline-none focus:border-emerald-500 text-white font-medium"></textarea>
-            <button class="w-full py-4 bg-gradient-to-r from-emerald-500 to-blue-500 text-navy-950 text-xl font-extrabold rounded-full hover:scale-105 transition">Send Happy Message!</button>
-        </form>
-    </section>
+<div class="card">
+<h3>Pharmaceuticals</h3>
+<p>Drug development including tablets, capsules, and injections.</p>
+</div>
 
-    <footer class="py-16 px-6 border-t-2 border-slate-800 text-center text-slate-600 font-medium">
-        <p>&copy; 2026 Veloce Biotech. High five! Made with fun.</p>
-    </footer>
+</section>
 
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
+<footer>
+<p>© 2026 Veloce Biotechnology</p>
+</footer>
 
-        // 1. GSAP Hero Section Animations
-        gsap.from(".hero-content > *", { 
-            y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "back.out(1.7)", delay: 0.3 
-        });
-        gsap.from(".nav-links a", { y: -20, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out" });
-        gsap.from(".logo-helix-container", { scale: 0, rotation: 360, duration: 1.5, ease: "elastic.out(1, 0.5)", delay: 0.5 });
-
-        // 2. Continuous Pulse Animations (Cute Factor)
-        gsap.to(".pulse-tag", { scale: 1.05, opacity: 0.8, yoyo: true, repeat: -1, duration: 1 });
-        gsap.to(".sparkles-icon", { rotation: 15, xoyo: true, repeat: -1, duration: 0.8 });
-        gsap.to(".brain-icon", { x: 5, y: -5, yoyo: true, repeat: -1, duration: 2, ease: "sine.inOut" });
-        gsap.to(".heart-icon", { scale: 1.1, yoyo: true, repeat: -1, duration: 0.6, ease: "circ.inOut" });
-        gsap.to(".node-pulse", { scale: 1.2, yoyo: true, repeat: -1, duration: 0.7 });
-
-        // 3. ScrollTrigger Animations (Trigger as you scroll down)
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Tech Grid Cards (Fade In and Stagger)
-        gsap.from(".tech-grid .cute-glass", {
-            scrollTrigger: { trigger: ".tech-section", start: "top 80%" },
-            y: 100, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out"
-        });
-
-        // Pipeline Items (Cascade down)
-        gsap.from(".pipeline-item", {
-            scrollTrigger: { trigger: ".pipeline-section", start: "top 70%" },
-            x: -50, opacity: 0, duration: 0.6, stagger: 0.2, ease: "power2.out"
-        });
-
-        // Contact Section (Scale In)
-        gsap.from(".contact-section form", {
-            scrollTrigger: { trigger: ".contact-section", start: "top 85%" },
-            scale: 0.8, opacity: 0, duration: 1, ease: "elastic.out(1, 0.75)"
-        });
-
-        // 4. KUTE.js Background Blob Morphing
-        const morph1 = KUTE.fromTo('#shape1', { path: '#shape1' }, { path: '#shape2' }, {
-            repeat: -1, yoyo: true, duration: 15000, easing: 'easingQuadraticInOut'
-        });
-        const morph2 = KUTE.fromTo('#shape3', { path: '#shape3' }, { path: '#shape1' }, { // Morph shape 3 to shape 1
-            repeat: -1, yoyo: true, duration: 20000, easing: 'easingCircularInOut'
-        });
-        morph1.start();
-        morph2.start();
-
-    </script>
 </body>
 </html>
