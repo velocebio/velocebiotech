@@ -1,240 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <!-- SEO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Veloce Biotechnology - Engineering Life with Precision. AI-powered biology, gene editing, and transformative therapeutics.">
-    <title>Veloce Biotechnology</title>
-
-    <!-- Google Font -->
+    <title>Veloce Biotechnology | Engineering Life with Precision</title>
+    <meta name="description" content="AI-Powered Biology. Next-Generation Gene Editing. Transformative Therapeutics.">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
-        :root {
-            --bg: #0a0f1f;
-            --emerald: #10b981;
-            --blue: #00d4ff;
-            --glass: rgba(255,255,255,0.05);
-            --text: #e2e8f0;
+        body { font-family: 'Inter', sans-serif; background-color: #020617; }
+        
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        /* NAVBAR */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
+        /* Animated Particle Background */
+        .bg-particles {
             position: fixed;
-            width: 100%;
-            background: rgba(10,15,31,0.7);
-            backdrop-filter: blur(10px);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
+            z-index: -1;
+            overflow: hidden;
         }
-
-        nav img {
-            height: 45px;
+        .particle {
+            position: absolute;
+            background: linear-gradient(to bottom, #10b981, #3b82f6);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite linear;
         }
-
-        nav ul {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text);
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--blue);
-        }
-
-        /* HERO */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            background: linear-gradient(to right, var(--emerald), var(--blue));
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            max-width: 600px;
-        }
-
-        .btn {
-            padding: 12px 28px;
-            margin: 15px 10px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .primary { background: var(--emerald); }
-        .secondary { background: var(--blue); }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 100px 8%;
-        }
-
-        h2 {
-            color: var(--blue);
-            margin-bottom: 30px;
-        }
-
-        /* GLASS CARDS */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--emerald);
-        }
-
-        /* CONTACT */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 500px;
-        }
-
-        input, textarea {
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: rgba(255,255,255,0.03);
-        }
-
-        /* RESPONSIVE */
-        @media(max-width:768px){
-            nav ul { display:none; }
-            .hero h1 { font-size: 2.2rem; }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
     </style>
 </head>
+<body class="text-slate-200 antialiased">
 
-<body>
+    <div class="bg-particles" id="particle-container"></div>
 
-<!-- NAVIGATION -->
-<nav>
-    <img src="logo.png" alt="Veloce Biotechnology Logo">
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#technology">Technology</a></li>
-        <li><a href="#pipeline">Pipeline</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-    <h1>Engineering Life with Precision</h1>
-    <p>AI-Powered Biology. Next-Generation Gene Editing. Transformative Therapeutics.</p>
-    <div>
-        <button class="btn primary">Explore Technology</button>
-        <button class="btn secondary">Partner With Us</button>
-    </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-    <h2>About Veloce Biotechnology</h2>
-    <p>Accelerating biological breakthroughs through AI-driven gene engineering and next-generation pharmaceutical research.</p>
-</section>
-
-<!-- TECHNOLOGY -->
-<section id="technology">
-    <h2>Technology Platforms</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Gene Editing Platform</h3>
-            <p>Advanced CRISPR-based genomic engineering tools.</p>
+    <nav class="fixed w-full z-50 px-6 py-4 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-gradient-to-tr from-emerald-500 to-blue-600 rounded-lg"></div>
+                <span class="text-xl font-bold tracking-tighter text-white">VELOCE <span class="text-emerald-400">BIO</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#about" class="hover:text-emerald-400 transition">About</a>
+                <a href="#technology" class="hover:text-emerald-400 transition">Technology</a>
+                <a href="#pipeline" class="hover:text-emerald-400 transition">Pipeline</a>
+                <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded-full text-white transition">Partner With Us</a>
+            </div>
         </div>
-        <div class="card">
-            <h3>AI Biology Engine</h3>
-            <p>Machine learning models for computational drug discovery.</p>
+    </nav>
+
+    <section class="min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="max-w-4xl text-center">
+            <div class="inline-block px-4 py-1 mb-6 border border-emerald-500/30 rounded-full bg-emerald-500/10 text-emerald-400 text-sm font-semibold tracking-wide uppercase">
+                Now in Phase II Clinical Trials
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Engineering Life with <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-blue-500">Precision</span>
+            </h1>
+            <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
+                AI-Powered Biology. Next-Generation Gene Editing. Transformative Therapeutics for a healthier global future.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#technology" class="px-8 py-4 bg-white text-slate-950 font-bold rounded-lg hover:bg-emerald-400 transition duration-300">Explore Technology</a>
+                <a href="#contact" class="px-8 py-4 border border-slate-700 font-bold rounded-lg hover:bg-slate-800 transition duration-300">Partner With Us</a>
+            </div>
         </div>
-        <div class="card">
-            <h3>Pharmaceutical Pipeline</h3>
-            <p>Precision therapeutic development across key disease areas.</p>
+    </section>
+
+    <section id="technology" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4">The Innovation Engine</h2>
+            <div class="h-1 w-20 bg-emerald-500 mx-auto"></div>
         </div>
-    </div>
-</section>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-2xl">
+                <i data-lucide="dna" class="text-emerald-400 mb-6 w-12 h-12"></i>
+                <h3 class="text-xl font-bold text-white mb-4">Gene Editing Platform</h3>
+                <p class="text-slate-400">Proprietary CRISPR-Cas14 tools designed for ultra-precise genomic engineering with zero off-target effects.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl">
+                <i data-lucide="cpu" class="text-blue-400 mb-6 w-12 h-12"></i>
+                <h3 class="text-xl font-bold text-white mb-4">AI Biology Engine</h3>
+                <p class="text-slate-400">Machine learning models trained on petabytes of genomic data to predict protein folding and drug interactions.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl">
+                <i data-lucide="flask-conical" class="text-emerald-400 mb-6 w-12 h-12"></i>
+                <h3 class="text-xl font-bold text-white mb-4">Therapeutic Pipeline</h3>
+                <p class="text-slate-400">Accelerating drug discovery from years to months through automated high-throughput screening.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- PIPELINE -->
-<section id="pipeline">
-    <h2>Research & Pipeline</h2>
-    <p>Therapeutic focus areas include Oncology, Rare Diseases, and Immunotherapy.</p>
-</section>
+    <section id="pipeline" class="py-24 bg-slate-900/50 border-y border-slate-800 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Development Pipeline</h2>
+            <div class="space-y-6">
+                <div class="flex items-center gap-6 p-4 border-l-4 border-emerald-500 bg-slate-800/30">
+                    <div class="flex-1">
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Oncology</span>
+                        <h4 class="text-lg font-bold text-white">VB-102: Solid Tumor Editor</h4>
+                    </div>
+                    <div class="hidden md:flex gap-2">
+                        <div class="h-2 w-12 bg-emerald-500 rounded-full"></div>
+                        <div class="h-2 w-12 bg-emerald-500 rounded-full"></div>
+                        <div class="h-2 w-12 bg-slate-700 rounded-full"></div>
+                        <div class="h-2 w-12 bg-slate-700 rounded-full"></div>
+                    </div>
+                    <span class="text-sm font-medium text-slate-500 uppercase">Phase II</span>
+                </div>
+                </div>
+        </div>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact">
-    <h2>Contact Us</h2>
-    <form>
-        <input type="text" placeholder="Full Name">
-        <input type="email" placeholder="Email Address">
-        <textarea rows="5" placeholder="Your Message"></textarea>
-        <button class="btn primary">Submit</button>
-    </form>
-</section>
+    <section id="contact" class="py-24 px-6 max-w-xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-white mb-8">Let's Reshape the Future</h2>
+        <form class="space-y-4">
+            <input type="text" placeholder="Name" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-lg focus:outline-none focus:border-emerald-500 text-white">
+            <input type="email" placeholder="Work Email" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-lg focus:outline-none focus:border-emerald-500 text-white">
+            <textarea placeholder="How can we collaborate?" rows="4" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-lg focus:outline-none focus:border-emerald-500 text-white"></textarea>
+            <button class="w-full py-4 bg-gradient-to-r from-emerald-600 to-blue-600 text-white font-bold rounded-lg hover:opacity-90 transition">Send Inquiry</button>
+        </form>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-    © 2026 Veloce Biotechnology. All Rights Reserved.
-</footer>
+    <footer class="py-12 px-6 border-t border-slate-800 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Veloce Biotechnology. All rights reserved. | Advancing Humanity through Code & CRISPR.</p>
+    </footer>
 
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Particle Generator
+        const container = document.getElementById('particle-container');
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 4 + 2 + 'px';
+            particle.style.width = size;
+            particle.style.height = size;
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            container.appendChild(particle);
+        }
+    </script>
 </body>
 </html>
