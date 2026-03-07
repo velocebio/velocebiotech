@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veloce Biotechnology - A Bridgerton Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <title>Veloce Biotechnology - Premium Database Access</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -13,10 +13,12 @@
             --cream: #FFF8F0;
             --gold: #C9A961;
             --gold-dark: #A68B4B;
-            --text-dark: #4A4A4A;
-            --text-light: #7A7A7A;
+            --text-dark: #2C2C2C;
+            --text-light: #5A5A5A;
             --white: #ffffff;
             --blush: #FADADD;
+            --lavender: #E6E6FA;
+            --peach: #FFDAB9;
         }
 
         * {
@@ -26,12 +28,13 @@
         }
 
         body {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Lato', sans-serif;
             background: linear-gradient(135deg, #FFF8F0 0%, #F8E8E8 50%, #FFF0F5 100%);
             color: var(--text-dark);
             line-height: 1.8;
             position: relative;
             overflow-x: hidden;
+            font-size: 16px;
         }
 
         /* Floral Background Pattern */
@@ -42,14 +45,67 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' opacity='0.05'%3E%3Cpath d='M50 10 Q60 30 50 50 Q40 30 50 10' fill='%23D4A5A5'/%3E%3Ccircle cx='50' cy='55' r='8' fill='%23C9A961'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' opacity='0.05'%3E%3Cpath d='M50 10 Q60 30 50 50 Q40 30 50 10' fill='%23D4A5A5'/%3E%3Ccircle cx='50' cy='55' r='8' fill='%23C9A961'/%3E%3C/svg%3E");
             opacity: 0.3;
             z-index: -1;
             pointer-events: none;
         }
 
-        /* Ornate Corner Decorations - SVG */
+        /* Cute DNA Animations */
+        .dna-container {
+            position: fixed;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        .dna-left {
+            left: 5%;
+            top: 30%;
+            animation: floatDNA 8s ease-in-out infinite;
+        }
+
+        .dna-right {
+            right: 5%;
+            top: 50%;
+            animation: floatDNA 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatDNA {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .dna-helix {
+            width: 80px;
+            height: 200px;
+            position: relative;
+        }
+
+        .dna-strand {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: rotateDNA 3s linear infinite;
+        }
+
+        .dna-strand:nth-child(odd) {
+            background: linear-gradient(135deg, var(--dusty-rose), var(--gold));
+            left: 0;
+        }
+
+        .dna-strand:nth-child(even) {
+            background: linear-gradient(135deg, var(--gold), var(--dusty-rose));
+            right: 0;
+        }
+
+        @keyframes rotateDNA {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(30px); }
+        }
+
+        /* Ornate Corner Decorations */
         .floral-corner {
             position: fixed;
             width: 300px;
@@ -59,47 +115,91 @@
             opacity: 0.8;
         }
 
-        .top-left {
-            top: 0;
-            left: 0;
-            transform: rotate(0deg);
-        }
+        .top-left { top: 0; left: 0; }
+        .top-right { top: 0; right: 0; transform: scaleX(-1); }
+        .bottom-left { bottom: 0; left: 0; transform: scaleY(-1); }
+        .bottom-right { bottom: 0; right: 0; transform: scale(-1); }
 
-        .top-right {
-            top: 0;
-            right: 0;
-            transform: scaleX(-1);
-        }
-
-        .bottom-left {
-            bottom: 0;
-            left: 0;
-            transform: scaleY(-1);
-        }
-
-        .bottom-right {
-            bottom: 0;
-            right: 0;
-            transform: scale(-1);
-        }
-
-        /* Ornate Border Top */
-        .ornate-border-top {
+        /* Floating Flowers Animation */
+        .floating-flower {
             position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 80px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 80'%3E%3Cpath d='M0 40 Q100 0 200 40 Q300 80 400 40' stroke='%23C9A961' stroke-width='2' fill='none' opacity='0.4'/%3E%3Ccircle cx='200' cy='40' r='15' fill='%23D4A5A5' opacity='0.6'/%3E%3C/svg%3E") no-repeat center top;
-            background-size: contain;
-            z-index: 99;
+            font-size: 2rem;
+            opacity: 0.15;
             pointer-events: none;
+            z-index: 0;
+            animation: floatFlower 15s infinite ease-in-out;
+        }
+
+        @keyframes floatFlower {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--soft-pink) 100%);
+            border: 3px solid var(--gold);
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            animation: slideInRight 0.5s ease;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(400px); }
+            to { transform: translateX(0); }
+        }
+
+        .music-player:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(201, 169, 97, 0.6);
+        }
+
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        .music-info {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold-dark);
+            font-size: 0.95rem;
+        }
+
+        .music-note {
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         /* Navigation */
         nav {
-            background: linear-gradient(180deg, rgba(248, 232, 232, 0.95) 0%, rgba(255, 248, 240, 0.95) 100%);
+            background: linear-gradient(180deg, rgba(248, 232, 232, 0.98) 0%, rgba(255, 248, 240, 0.98) 100%);
             padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
@@ -112,24 +212,66 @@
             backdrop-filter: blur(10px);
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--gold-dark);
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            position: relative;
+        /* Enhanced Bridgerton Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .logo::after {
-            content: '❦';
+        .logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-ornament {
+            font-size: 2.5rem;
+            animation: sparkle 2s ease infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--dusty-rose) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--dusty-rose);
+            font-style: italic;
+            letter-spacing: 3px;
+            margin-top: -5px;
+        }
+
+        .logo-flourish {
             position: absolute;
             bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.2rem;
-            color: var(--dusty-rose);
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--dusty-rose), var(--gold), transparent);
+            border-radius: 2px;
         }
 
         .nav-links {
@@ -142,27 +284,13 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-dark);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             padding: 0.5rem 1.5rem;
             transition: all 0.3s ease;
             border: 2px solid transparent;
             border-radius: 25px;
-            position: relative;
-        }
-
-        .nav-links a::before {
-            content: '✿';
-            position: absolute;
-            left: -15px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            color: var(--gold);
-        }
-
-        .nav-links a:hover::before {
-            left: 5px;
-            opacity: 1;
+            font-family: 'Lato', sans-serif;
         }
 
         .nav-links a:hover {
@@ -171,10 +299,39 @@
             background: rgba(201, 169, 97, 0.1);
         }
 
-        /* Hero Section with Floral Design */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+            margin-left: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, var(--dusty-rose), var(--gold));
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Hero Section with DNA */
         .hero {
-            background: linear-gradient(135deg, rgba(248, 232, 232, 0.8) 0%, rgba(255, 240, 245, 0.8) 100%);
-            min-height: 80vh;
+            background: linear-gradient(135deg, rgba(248, 232, 232, 0.9) 0%, rgba(255, 240, 245, 0.9) 100%);
+            min-height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -186,52 +343,63 @@
             border-bottom: 3px solid var(--gold);
         }
 
-        /* Floral wreath decoration */
-        .hero::before {
-            content: '';
+        .hero-dna {
             position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 200px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 200'%3E%3Cpath d='M50 150 Q100 50 150 100 Q200 150 250 100 Q300 50 350 100 Q400 150 450 100 Q500 50 550 150' stroke='%23D4A5A5' stroke-width='3' fill='none' opacity='0.4'/%3E%3Ccircle cx='100' cy='120' r='20' fill='%23FADADD' opacity='0.6'/%3E%3Ccircle cx='200' cy='80' r='25' fill='%23F8E8E8' opacity='0.6'/%3E%3Ccircle cx='300' cy='120' r='22' fill='%23FADADD' opacity='0.6'/%3E%3Ccircle cx='400' cy='80' r='20' fill='%23F8E8E8' opacity='0.6'/%3E%3Ccircle cx='500' cy='120' r='25' fill='%23FADADD' opacity='0.6'/%3E%3C/svg%3E") no-repeat center top;
-            opacity: 0.6;
+            font-size: 8rem;
+            opacity: 0.1;
+            animation: rotateDNA 20s linear infinite;
         }
+
+        .hero-dna-1 { top: 10%; left: 10%; }
+        .hero-dna-2 { bottom: 10%; right: 10%; animation-direction: reverse; }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            color: var(--gold-dark);
+            font-size: 4.5rem;
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--dusty-rose) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.15);
+            animation: fadeInDown 1s ease;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .hero .subtitle {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
             color: var(--dusty-rose);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
+            animation: fadeInUp 1s ease 0.3s both;
         }
 
         .hero .tagline {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--text-light);
             max-width: 800px;
-            margin-bottom: 3rem;
-            font-style: italic;
+            margin-bottom: 2.5rem;
+            font-family: 'Lato', sans-serif;
+            animation: fadeInUp 1s ease 0.6s both;
         }
 
-        /* Decorative divider */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .divider {
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 2rem 0;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--gold);
         }
 
@@ -247,21 +415,10 @@
         /* Search Bar */
         .search-container {
             padding: 4rem 5%;
-            background: linear-gradient(135deg, rgba(255, 248, 240, 0.9) 0%, rgba(248, 232, 232, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(255, 248, 240, 0.95) 0%, rgba(248, 232, 232, 0.95) 100%);
             text-align: center;
             position: relative;
             border-bottom: 2px solid var(--gold);
-        }
-
-        .search-container::before {
-            content: '✿ ❀ ✿';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--gold);
-            font-size: 1.5rem;
-            opacity: 0.6;
         }
 
         .search-box {
@@ -272,9 +429,9 @@
 
         .search-box input {
             width: 100%;
-            padding: 1.5rem 3rem 1.5rem 2rem;
-            font-size: 1.3rem;
-            font-family: 'Cormorant Garamond', serif;
+            padding: 1.3rem 3rem 1.3rem 2rem;
+            font-size: 1.2rem;
+            font-family: 'Lato', sans-serif;
             border: 3px solid var(--gold);
             border-radius: 50px;
             outline: none;
@@ -292,8 +449,8 @@
             padding: 1rem 2.5rem;
             border-radius: 50px;
             color: var(--white);
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -313,49 +470,176 @@
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--gold-dark);
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--dusty-rose) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-align: center;
             margin-bottom: 1rem;
             position: relative;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .section-title::after {
-            content: '❧ ❦ ❧';
+            content: '❧ 🧬 ';
             display: block;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--dusty-rose);
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             letter-spacing: 10px;
+            -webkit-text-fill-color: var(--dusty-rose);
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: var(--text-light);
-            font-style: italic;
             margin-bottom: 3rem;
+            font-family: 'Lato', sans-serif;
         }
 
-        /* Category Tabs with Floral Design */
+        /* Pricing/Purchase Section */
+        .purchase-section {
+            background: linear-gradient(135deg, rgba(255, 248, 240, 0.9) 0%, rgba(248, 232, 232, 0.9) 100%);
+            padding: 6rem 5%;
+            border-top: 3px solid var(--gold);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, var(--white) 0%, var(--soft-pink) 100%);
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border-width: 4px;
+            box-shadow: 0 10px 40px rgba(201, 169, 97, 0.4);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(135deg, var(--gold), var(--dusty-rose));
+            color: white;
+            padding: 0.5rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.85rem;
+            font-weight: bold;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(201, 169, 97, 0.5);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+
+        .pricing-tier {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--gold-dark), var(--dusty-rose));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .pricing-amount {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .pricing-period {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.1rem;
+            border-bottom: 1px dashed var(--dusty-rose);
+            font-family: 'Lato', sans-serif;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .purchase-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .purchase-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(201, 169, 97, 0.5);
+        }
+
+        /* Category Tabs */
         .tabs {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
             margin-bottom: 4rem;
             flex-wrap: wrap;
-            position: relative;
-        }
-
-        .tabs::before {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 10%;
-            right: 10%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
         .tab-btn {
@@ -363,28 +647,12 @@
             background: linear-gradient(135deg, var(--white) 0%, var(--soft-pink) 100%);
             border: 2px solid var(--gold);
             color: var(--gold-dark);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             border-radius: 30px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tab-btn::before {
-            content: ': '✿';
-            position: absolute;
-            left: 10px;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn:hover::before,
-        .tab-btn.active::before {
-            opacity: 1;
-            left: 15px;
         }
 
         .tab-btn:hover,
@@ -409,10 +677,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Drug Cards with Ornate Borders */
+        /* Drug Cards */
         .drug-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2.5rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -427,6 +695,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(201, 169, 97, 0.2);
+            animation: fadeInUp 0.8s ease;
         }
 
         .drug-card::before {
@@ -439,36 +708,28 @@
             background: linear-gradient(90deg, var(--gold), var(--dusty-rose), var(--gold));
         }
 
-        .drug-card::after {
-            content: '❦';
-            position: absolute;
-            bottom: 10px;
-            right: 20px;
-            font-size: 2rem;
-            color: var(--gold);
-            opacity: 0.3;
-        }
-
         .drug-card:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 15px 40px rgba(201, 169, 97, 0.4);
-            border-color: var(--dusty-rose);
         }
 
         .drug-name {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--gold-dark);
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--gold-dark), var(--dusty-rose));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
 
         .drug-generic {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--text-light);
             font-style: italic;
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 2px dashed var(--dusty-rose);
+            font-family: 'Lato', sans-serif;
         }
 
         .drug-info {
@@ -477,12 +738,15 @@
 
         .drug-info p {
             margin: 0.8rem 0;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-family: 'Lato', sans-serif;
         }
 
         .drug-info strong {
-            color: var(--gold-dark);
-            font-weight: 600;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
 
         .google-link {
@@ -495,10 +759,11 @@
             color: var(--text-dark);
             text-decoration: none;
             border-radius: 30px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.1rem;
             transition: all 0.3s ease;
             border: 2px solid var(--gold);
+            font-family: 'Lato', sans-serif;
         }
 
         .google-link:hover {
@@ -507,7 +772,7 @@
             transform: scale(1.05);
         }
 
-        /* Biotech Categories with Floral Frames */
+        /* Biotech Cards */
         .biotech-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -525,19 +790,7 @@
             transition: all 0.4s ease;
             position: relative;
             box-shadow: 0 8px 25px rgba(201, 169, 97, 0.3);
-        }
-
-        .biotech-card::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 2px solid var(--gold);
-            border-radius: 15px;
-            opacity: 0.4;
-            pointer-events: none;
+            animation: fadeInUp 0.8s ease;
         }
 
         .biotech-card:hover {
@@ -560,7 +813,9 @@
         .biotech-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            color: var(--gold-dark);
+            background: linear-gradient(135deg, var(--gold-dark), var(--dusty-rose));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
         }
 
@@ -568,6 +823,7 @@
             font-size: 1.1rem;
             color: var(--text-light);
             margin-bottom: 1.5rem;
+            font-family: 'Lato', sans-serif;
         }
 
         .biotech-card ul {
@@ -582,6 +838,7 @@
             padding-left: 2rem;
             position: relative;
             font-size: 1.05rem;
+            font-family: 'Lato', sans-serif;
         }
 
         .biotech-card ul li::before {
@@ -590,21 +847,6 @@
             left: 0;
             color: var(--gold);
             font-size: 1.2rem;
-        }
-
-        /* Floating Flowers Animation */
-        .floating-flower {
-            position: fixed;
-            font-size: 2rem;
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 0;
-            animation: floatFlower 15s infinite ease-in-out;
-        }
-
-        @keyframes floatFlower {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-100px) rotate(180deg); }
         }
 
         /* Footer */
@@ -619,7 +861,7 @@
         }
 
         footer::before {
-            content: '❦ ❧ ❦';
+            content: '❦ 🧬 ';
             position: absolute;
             top: -15px;
             left: 50%;
@@ -632,124 +874,425 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .section-title {
-                font-size: 2.5rem;
-            }
-            .drug-grid {
-                grid-template-columns: 1fr;
-            }
-            .floral-corner {
-                width: 150px;
-                height: 150px;
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.8rem; }
+            .section-title { font-size: 2.2rem; }
+            .drug-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { transform: scale(1); }
+            .pricing-card.featured:hover { transform: translateY(-10px) scale(1.02); }
+            .floral-corner { width: 150px; height: 150px; }
+            .music-player { bottom: 20px; right: 20px; padding: 0.8rem 1rem; }
+            .music-info { display: none; }
         }
 
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--cream);
-        }
-
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, var(--gold) 0%, var(--dusty-rose) 100%);
             border-radius: 6px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--gold-dark) 0%, var(--dusty-rose) 100%);
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+            border: 4px solid var(--gold);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--gold-dark);
+        }
+
+        .cart-item {
+            padding: 1.5rem;
+            border-bottom: 2px dashed var(--dusty-rose);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-total {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: right;
+            margin-top: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* Payment Modal Styles */
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .payment-method {
+            flex: 1;
+            padding: 1.5rem;
+            border: 3px solid var(--gold);
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .payment-method:hover,
+        .payment-method.active {
+            background: linear-gradient(135deg, var(--soft-pink), var(--blush));
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(201, 169, 97, 0.3);
+        }
+
+        .payment-method i {
+            font-size: 2.5rem;
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .payment-method span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--gold-dark);
+            font-weight: 600;
+        }
+
+        .payment-form {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .payment-form.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--gold-dark);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--dusty-rose);
+            box-shadow: 0 0 10px rgba(201, 169, 97, 0.3);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .pay-now-btn {
+            width: 100%;
+            padding: 1.3rem;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 2rem;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .pay-now-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .success-message.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            color: #4CAF50;
+            margin-bottom: 1.5rem;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .success-message h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
+        }
+
+        .success-message p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .order-id {
+            background: var(--soft-pink);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 1rem 0;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            color: var(--gold-dark);
         }
     </style>
 </head>
 <body>
-    <!-- Floral Corner Decorations (SVG) -->
+    <!-- Audio Element - Bridgerton Style Classical Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Cute DNA Animations -->
+    <div class="dna-container dna-left">
+        <div class="dna-helix">
+            <div class="dna-strand" style="top: 0%; animation-delay: 0s;"></div>
+            <div class="dna-strand" style="top: 10%; animation-delay: 0.3s;"></div>
+            <div class="dna-strand" style="top: 20%; animation-delay: 0.6s;"></div>
+            <div class="dna-strand" style="top: 30%; animation-delay: 0.9s;"></div>
+            <div class="dna-strand" style="top: 40%; animation-delay: 1.2s;"></div>
+            <div class="dna-strand" style="top: 50%; animation-delay: 1.5s;"></div>
+            <div class="dna-strand" style="top: 60%; animation-delay: 1.8s;"></div>
+            <div class="dna-strand" style="top: 70%; animation-delay: 2.1s;"></div>
+            <div class="dna-strand" style="top: 80%; animation-delay: 2.4s;"></div>
+            <div class="dna-strand" style="top: 90%; animation-delay: 2.7s;"></div>
+        </div>
+    </div>
+
+    <div class="dna-container dna-right">
+        <div class="dna-helix">
+            <div class="dna-strand" style="top: 0%; animation-delay: 1.5s;"></div>
+            <div class="dna-strand" style="top: 10%; animation-delay: 1.8s;"></div>
+            <div class="dna-strand" style="top: 20%; animation-delay: 2.1s;"></div>
+            <div class="dna-strand" style="top: 30%; animation-delay: 2.4s;"></div>
+            <div class="dna-strand" style="top: 40%; animation-delay: 2.7s;"></div>
+            <div class="dna-strand" style="top: 50%; animation-delay: 3s;"></div>
+            <div class="dna-strand" style="top: 60%; animation-delay: 3.3s;"></div>
+            <div class="dna-strand" style="top: 70%; animation-delay: 3.6s;"></div>
+            <div class="dna-strand" style="top: 80%; animation-delay: 3.9s;"></div>
+            <div class="dna-strand" style="top: 90%; animation-delay: 4.2s;"></div>
+        </div>
+    </div>
+
+    <!-- Floral Corners -->
     <div class="floral-corner top-left">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0 Q50 50 100 0 Q150 50 200 0" fill="none" stroke="#D4A5A5" stroke-width="2" opacity="0.6"/>
             <circle cx="30" cy="40" r="25" fill="#F8E8E8" opacity="0.8"/>
             <circle cx="80" cy="30" r="20" fill="#FADADD" opacity="0.8"/>
             <circle cx="140" cy="50" r="22" fill="#F8E8E8" opacity="0.8"/>
-            <path d="M20 60 Q40 80 60 60" fill="none" stroke="#C9A961" stroke-width="2"/>
-            <path d="M100 70 Q120 90 140 70" fill="none" stroke="#C9A961" stroke-width="2"/>
-            <circle cx="50" cy="100" r="18" fill="#FADADD" opacity="0.7"/>
-            <circle cx="120" cy="110" r="15" fill="#F8E8E8" opacity="0.7"/>
-            <path d="M0 150 Q100 120 200 150" fill="none" stroke="#D4A5A5" stroke-width="2" opacity="0.5"/>
         </svg>
     </div>
-
     <div class="floral-corner top-right">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0 Q50 50 100 0 Q150 50 200 0" fill="none" stroke="#D4A5A5" stroke-width="2" opacity="0.6"/>
             <circle cx="30" cy="40" r="25" fill="#F8E8E8" opacity="0.8"/>
             <circle cx="80" cy="30" r="20" fill="#FADADD" opacity="0.8"/>
-            <circle cx="140" cy="50" r="22" fill="#F8E8E8" opacity="0.8"/>
-            <path d="M20 60 Q40 80 60 60" fill="none" stroke="#C9A961" stroke-width="2"/>
-            <path d="M100 70 Q120 90 140 70" fill="none" stroke="#C9A961" stroke-width="2"/>
-            <circle cx="50" cy="100" r="18" fill="#FADADD" opacity="0.7"/>
-            <circle cx="120" cy="110" r="15" fill="#F8E8E8" opacity="0.7"/>
         </svg>
     </div>
-
     <div class="floral-corner bottom-left">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <circle cx="40" cy="160" r="25" fill="#F8E8E8" opacity="0.8"/>
             <circle cx="100" cy="150" r="20" fill="#FADADD" opacity="0.8"/>
-            <circle cx="160" cy="170" r="22" fill="#F8E8E8" opacity="0.8"/>
-            <path d="M0 120 Q100 150 200 120" fill="none" stroke="#D4A5A5" stroke-width="2" opacity="0.5"/>
         </svg>
     </div>
-
     <div class="floral-corner bottom-right">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <circle cx="40" cy="160" r="25" fill="#F8E8E8" opacity="0.8"/>
             <circle cx="100" cy="150" r="20" fill="#FADADD" opacity="0.8"/>
-            <circle cx="160" cy="170" r="22" fill="#F8E8E8" opacity="0.8"/>
-            <path d="M0 120 Q100 150 200 120" fill="none" stroke="#D4A5A5" stroke-width="2" opacity="0.5"/>
         </svg>
     </div>
-
-    <!-- Ornate Border Top -->
-    <div class="ornate-border-top"></div>
 
     <!-- Floating Flowers -->
     <div class="floating-flower" style="top: 20%; left: 5%;">🌸</div>
     <div class="floating-flower" style="top: 60%; right: 8%; animation-delay: 2s;">🌹</div>
     <div class="floating-flower" style="top: 40%; left: 10%; animation-delay: 4s;">🌺</div>
-    <div class="floating-flower" style="bottom: 20%; left: 15%; animation-delay: 6s;">🌷</div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-btn" id="musicToggle" onclick="toggleMusic()">
+            <i class="fas fa-play music-note"></i>
+        </button>
+        <div class="music-info">
+            <div style="font-weight: 700;">Classical Collection</div>
+            <div style="font-size: 0.85rem; opacity: 0.8;">Bridgerton Style</div>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav>
-        <div class="logo">🌹 Veloce Bio</div>
+        <div class="logo-container">
+            <div class="logo">
+                <span class="logo-ornament">🌹</span>
+                <div class="logo-text">
+                    <div class="logo-main">Veloce Bio</div>
+                    <div class="logo-tagline">Excellence in Science</div>
+                    <div class="logo-flourish"></div>
+                </div>
+                <span class="logo-ornament">🧬</span>
+            </div>
+        </div>
         <ul class="nav-links">
             <li><a href="#biotech">Biotechnology</a></li>
             <li><a href="#drugs">Drug Database</a></li>
-            <li><a href="#therapeutics">Therapeutics</a></li>
-            <li><a href="#search">Search</a></li>
+            <li><a href="#purchase">Purchase Access</a></li>
         </ul>
+        <div class="cart-icon" onclick="openCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-dna hero-dna-1">🧬</div>
+        <div class="hero-dna hero-dna-2">🧬</div>
         <h1>Veloce Biotechnology</h1>
-        <p class="subtitle">A Most Elegant Scientific Endeavor</p>
-        <p class="tagline">"Where the refinement of Regency elegance meets the brilliance of modern biotechnology innovation"</p>
-        <div class="divider">❦ ❧ </div>
+        <p class="subtitle">Premium Pharmaceutical Database</p>
+        <p class="tagline">Access the world's most comprehensive collection of biotechnology information and drug databases</p>
+        <div class="divider">❦ 🧬 </div>
+    </section>
+
+    <!-- Purchase Section -->
+    <section class="purchase-section" id="purchase">
+        <h2 class="section-title">Purchase Database Access</h2>
+        <p class="section-subtitle">Choose the perfect plan for your research needs</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="pricing-tier">Scholar</h3>
+                <p class="pricing-description">Perfect for students and individual researchers</p>
+                <div class="pricing-amount">$49</div>
+                <div class="pricing-period">per month</div>
+                <ul class="pricing-features">
+                    <li>Access to drug database</li>
+                    <li>Up to 100 searches/month</li>
+                    <li>Basic biotech categories</li>
+                    <li>Email support</li>
+                    <li>PDF exports (10/month)</li>
+                </ul>
+                <button class="purchase-btn" onclick="addToCart('Scholar', 49)">Add to Cart</button>
+            </div>
+
+            <div class="pricing-card featured">
+                <h3 class="pricing-tier">Professional</h3>
+                <p class="pricing-description">Ideal for pharmaceutical professionals</p>
+                <div class="pricing-amount">$149</div>
+                <div class="pricing-period">per month</div>
+                <ul class="pricing-features">
+                    <li>Full database access</li>
+                    <li>Unlimited searches</li>
+                    <li>All biotech categories</li>
+                    <li>Priority support</li>
+                    <li>Unlimited PDF exports</li>
+                    <li>API access</li>
+                    <li>Downloadable datasets</li>
+                </ul>
+                <button class="purchase-btn" onclick="addToCart('Professional', 149)">Add to Cart</button>
+            </div>
+
+            <div class="pricing-card">
+                <h3 class="pricing-tier">Enterprise</h3>
+                <p class="pricing-description">For institutions and large organizations</p>
+                <div class="pricing-amount">$499</div>
+                <div class="pricing-period">per month</div>
+                <ul class="pricing-features">
+                    <li>Everything in Professional</li>
+                    <li>Up to 50 user accounts</li>
+                    <li>Custom integrations</li>
+                    <li>Dedicated account manager</li>
+                    <li>White-label options</li>
+                    <li>Advanced analytics</li>
+                    <li>SLA guarantee</li>
+                </ul>
+                <button class="purchase-btn" onclick="addToCart('Enterprise', 499)">Add to Cart</button>
+            </div>
+        </div>
     </section>
 
     <!-- Search Section -->
     <section class="search-container" id="search">
-        <h2 class="section-title">Search Our Compendium</h2>
-        <p class="section-subtitle">Discover the finest in pharmaceutical achievements</p>
+        <h2 class="section-title">Search Database</h2>
+        <p class="section-subtitle">Find drugs, biotechnology, and therapeutic information</p>
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Pray, search for drugs, biotechnology, or therapeutic areas...">
+            <input type="text" id="searchInput" placeholder="Search for drugs, biotechnology...">
             <button onclick="performSearch()">Search</button>
         </div>
     </section>
@@ -757,21 +1300,19 @@
     <!-- Biotechnology Categories -->
     <section class="section" id="biotech">
         <h2 class="section-title">Biotechnology Categories</h2>
-        <p class="section-subtitle">A comprehensive collection of scientific disciplines</p>
+        <p class="section-subtitle">Comprehensive coverage of all biotech disciplines</p>
         
         <div class="biotech-grid">
             <div class="biotech-card">
                 <div class="biotech-icon">🧬</div>
                 <h3>Genetic Engineering</h3>
-                <p>The delicate art of manipulating DNA to create modified organisms and therapeutic products</p>
+                <p>Manipulation of DNA to create modified organisms</p>
                 <ul>
-                    <li>Recombinant DNA Technology</li>
-                    <li>CRISPR-Cas9 Gene Editing</li>
+                    <li>CRISPR-Cas9</li>
+                    <li>Recombinant DNA</li>
                     <li>Gene Cloning</li>
-                    <li>Transgenic Organisms</li>
-                    <li>Synthetic Biology</li>
                 </ul>
-                <a href="https://www.google.com/search?q=genetic+engineering+biotechnology" target="_blank" class="google-link">
+                <a href="https://www.google.com/search?q=genetic+engineering" target="_blank" class="google-link">
                     <i class="fab fa-google"></i> Learn More
                 </a>
             </div>
@@ -779,15 +1320,13 @@
             <div class="biotech-card">
                 <div class="biotech-icon">💉</div>
                 <h3>Monoclonal Antibodies</h3>
-                <p>Laboratory-produced molecules engineered to serve as substitute antibodies</p>
+                <p>Laboratory-produced antibody molecules</p>
                 <ul>
-                    <li>Cancer Immunotherapy</li>
-                    <li>Autoimmune Disease Treatment</li>
-                    <li>Infectious Disease Therapy</li>
-                    <li>Diagnostic Applications</li>
-                    <li>Biosimilars</li>
+                    <li>Cancer Therapy</li>
+                    <li>Autoimmune Treatment</li>
+                    <li>Diagnostics</li>
                 </ul>
-                <a href="https://www.google.com/search?q=monoclonal+antibodies+therapy" target="_blank" class="google-link">
+                <a href="https://www.google.com/search?q=monoclonal+antibodies" target="_blank" class="google-link">
                     <i class="fab fa-google"></i> Learn More
                 </a>
             </div>
@@ -795,31 +1334,13 @@
             <div class="biotech-card">
                 <div class="biotech-icon">🧪</div>
                 <h3>Gene Therapy</h3>
-                <p>Treating diseases by modifying or manipulating gene expression</p>
+                <p>Treating diseases through gene modification</p>
                 <ul>
-                    <li>CAR-T Cell Therapy</li>
+                    <li>CAR-T Therapy</li>
                     <li>Gene Replacement</li>
                     <li>Gene Silencing</li>
-                    <li>In Vivo Gene Therapy</li>
-                    <li>Ex Vivo Gene Therapy</li>
                 </ul>
-                <a href="https://www.google.com/search?q=gene+therapy+treatments" target="_blank" class="google-link">
-                    <i class="fab fa-google"></i> Learn More
-                </a>
-            </div>
-
-            <div class="biotech-card">
-                <div class="biotech-icon">🌸</div>
-                <h3>Vaccine Development</h3>
-                <p>Creating immunizations to prevent infectious diseases</p>
-                <ul>
-                    <li>mRNA Vaccines</li>
-                    <li>Viral Vector Vaccines</li>
-                    <li>Protein Subunit Vaccines</li>
-                    <li>Live Attenuated Vaccines</li>
-                    <li>DNA Vaccines</li>
-                </ul>
-                <a href="https://www.google.com/search?q=biotechnology+vaccine+development" target="_blank" class="google-link">
+                <a href="https://www.google.com/search?q=gene+therapy" target="_blank" class="google-link">
                     <i class="fab fa-google"></i> Learn More
                 </a>
             </div>
@@ -827,49 +1348,33 @@
             <div class="biotech-card">
                 <div class="biotech-icon">🔬</div>
                 <h3>Diagnostics</h3>
-                <p>Biotechnological tools for disease detection and monitoring</p>
+                <p>Disease detection and monitoring tools</p>
                 <ul>
                     <li>PCR Testing</li>
-                    <li>Biomarker Detection</li>
+                    <li>Biomarkers</li>
                     <li>Genetic Testing</li>
-                    <li>Point-of-Care Diagnostics</li>
-                    <li>Next-Generation Sequencing</li>
                 </ul>
-                <a href="https://www.google.com/search?q=biotechnology+diagnostics" target="_blank" class="google-link">
-                    <i class="fab fa-google"></i> Learn More
-                </a>
-            </div>
-
-            <div class="biotech-card">
-                <div class="biotech-icon">🌱</div>
-                <h3>Agricultural Biotech</h3>
-                <p>Using biotechnology to improve crops and agricultural practices</p>
-                <ul>
-                    <li>Genetically Modified Crops</li>
-                    <li>Pest Resistance</li>
-                    <li>Drought Tolerance</li>
-                    <li>Nutritional Enhancement</li>
-                    <li>Biopesticides</li>
-                </ul>
-                <a href="https://www.google.com/search?q=agricultural+biotechnology" target="_blank" class="google-link">
+                <a href="https://www.google.com/search?q=biotech+diagnostics" target="_blank" class="google-link">
                     <i class="fab fa-google"></i> Learn More
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Drug Database Section -->
+    <!-- Drug Database -->
     <section class="section" id="drugs">
         <h2 class="section-title">Comprehensive Drug Database</h2>
-        <p class="section-subtitle">An extensive catalogue of pharmaceutical preparations</p>
+        <p class="section-subtitle">Extensive pharmaceutical information from around the world</p>
         
         <div class="tabs">
-            <button class="tab-btn active" onclick="openTab('topDrugs')">Top Selling Drugs</button>
-            <button class="tab-btn" onclick="openTab('monoclonal')">Monoclonal Antibodies</button>
-            <button class="tab-btn" onclick="openTab('geneTherapy')">Gene Therapies</button>
+            <button class="tab-btn active" onclick="openTab('topDrugs')">Top Selling</button>
             <button class="tab-btn" onclick="openTab('oncology')">Oncology</button>
-            <button class="tab-btn" onclick="openTab('cardiovascular')">Cardiovascular</button>
+            <button class="tab-btn" onclick="openTab('cardio')">Cardiovascular</button>
             <button class="tab-btn" onclick="openTab('diabetes')">Diabetes</button>
+            <button class="tab-btn" onclick="openTab('neurology')">Neurology</button>
+            <button class="tab-btn" onclick="openTab('immunology')">Immunology</button>
+            <button class="tab-btn" onclick="openTab('infectious')">Infectious Disease</button>
+            <button class="tab-btn" onclick="openTab('respiratory')">Respiratory</button>
         </div>
 
         <!-- Top Selling Drugs -->
@@ -880,12 +1385,12 @@
                     <p class="drug-generic">Generic: Pembrolizumab</p>
                     <div class="drug-info">
                         <p><strong>Company:</strong> Merck & Co.</p>
-                        <p><strong>Category:</strong> Oncology Immunotherapy</p>
+                        <p><strong>Category:</strong> Oncology - PD-1 Inhibitor</p>
                         <p><strong>2024 Sales:</strong> $29.48 billion</p>
-                        <p><strong>Use:</strong> Cancer treatment (PD-1 inhibitor)</p>
+                        <p><strong>Use:</strong> Multiple cancer types</p>
                     </div>
                     <a href="https://www.google.com/search?q=Keytruda+pembrolizumab" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
+                        <i class="fab fa-google"></i> Search
                     </a>
                 </div>
 
@@ -894,12 +1399,12 @@
                     <p class="drug-generic">Generic: Semaglutide</p>
                     <div class="drug-info">
                         <p><strong>Company:</strong> Novo Nordisk</p>
-                        <p><strong>Category:</strong> Diabetes/Weight Management</p>
+                        <p><strong>Category:</strong> Diabetes/GLP-1 Agonist</p>
                         <p><strong>2024 Sales:</strong> $17.55 billion</p>
                         <p><strong>Use:</strong> Type 2 diabetes, weight loss</p>
                     </div>
                     <a href="https://www.google.com/search?q=Ozempic+semaglutide" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
+                        <i class="fab fa-google"></i> Search
                     </a>
                 </div>
 
@@ -910,10 +1415,10 @@
                         <p><strong>Company:</strong> Bristol Myers Squibb/Pfizer</p>
                         <p><strong>Category:</strong> Cardiovascular/Anticoagulant</p>
                         <p><strong>2024 Sales:</strong> $13.2 billion</p>
-                        <p><strong>Use:</strong> Blood thinner, stroke prevention</p>
+                        <p><strong>Use:</strong> Stroke prevention, DVT/PE</p>
                     </div>
                     <a href="https://www.google.com/search?q=Eliquis+apixaban" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
+                        <i class="fab fa-google"></i> Search
                     </a>
                 </div>
 
@@ -927,56 +1432,93 @@
                         <p><strong>Use:</strong> Eczema, asthma, sinusitis</p>
                     </div>
                     <a href="https://www.google.com/search?q=Dupixent+dupilumab" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Skyrizi</h3>
+                    <p class="drug-generic">Generic: Risankizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> AbbVie</p>
+                        <p><strong>Category:</strong> Immunology/IL-23 Inhibitor</p>
+                        <p><strong>2024 Sales:</strong> $11.9 billion</p>
+                        <p><strong>Use:</strong> Psoriasis, Crohn's disease</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Skyrizi+risankizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Mounjaro</h3>
+                    <p class="drug-generic">Generic: Tirzepatide</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Eli Lilly</p>
+                        <p><strong>Category:</strong> Diabetes/GLP-1-GIP Agonist</p>
+                        <p><strong>2024 Sales:</strong> $11.1 billion</p>
+                        <p><strong>Use:</strong> Type 2 diabetes, obesity</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Mounjaro+tirzepatide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Humira</h3>
+                    <p class="drug-generic">Generic: Adalimumab</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> AbbVie</p>
+                        <p><strong>Category:</strong> Immunology/TNF Inhibitor</p>
+                        <p><strong>Use:</strong> Rheumatoid arthritis, Crohn's</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Humira+adalimumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Jardiance</h3>
+                    <p class="drug-generic">Generic: Empagliflozin</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Boehringer Ingelheim/Lilly</p>
+                        <p><strong>Category:</strong> Diabetes/SGLT2 Inhibitor</p>
+                        <p><strong>Use:</strong> Type 2 diabetes, heart failure</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Jardiance+empagliflozin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Eylea</h3>
+                    <p class="drug-generic">Generic: Aflibercept</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Regeneron/Bayer</p>
+                        <p><strong>Category:</strong> Ophthalmology/VEGF Inhibitor</p>
+                        <p><strong>Use:</strong> Macular degeneration</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Eylea+aflibercept" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Stelara</h3>
+                    <p class="drug-generic">Generic: Ustekinumab</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Johnson & Johnson</p>
+                        <p><strong>Category:</strong> Immunology/IL-12/23 Inhibitor</p>
+                        <p><strong>Use:</strong> Psoriasis, Crohn's disease</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Stelara+ustekinumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- More tabs content (same as before) -->
-        <div id="monoclonal" class="tab-content">
-            <div class="drug-grid">
-                <div class="drug-card">
-                    <h3 class="drug-name">Rituxan</h3>
-                    <p class="drug-generic">Generic: Rituximab</p>
-                    <div class="drug-info">
-                        <p><strong>Type:</strong> Anti-CD20</p>
-                        <p><strong>Use:</strong> Non-Hodgkin lymphoma, RA</p>
-                    </div>
-                    <a href="https://www.google.com/search?q=Rituxan+rituximab" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
-                    </a>
-                </div>
-                <div class="drug-card">
-                    <h3 class="drug-name">Herceptin</h3>
-                    <p class="drug-generic">Generic: Trastuzumab</p>
-                    <div class="drug-info">
-                        <p><strong>Type:</strong> Anti-HER2</p>
-                        <p><strong>Use:</strong> Breast cancer, gastric cancer</p>
-                    </div>
-                    <a href="https://www.google.com/search?q=Herceptin+trastuzumab" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div id="geneTherapy" class="tab-content">
-            <div class="drug-grid">
-                <div class="drug-card">
-                    <h3 class="drug-name">Zolgensma</h3>
-                    <p class="drug-generic">Generic: Onasemnogene abeparvovec</p>
-                    <div class="drug-info">
-                        <p><strong>Company:</strong> Novartis</p>
-                        <p><strong>Use:</strong> Spinal muscular atrophy (SMA)</p>
-                    </div>
-                    <a href="https://www.google.com/search?q=Zolgensma+gene+therapy" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
-                    </a>
-                </div>
-            </div>
-        </div>
-
+        <!-- Oncology Drugs -->
         <div id="oncology" class="tab-content">
             <div class="drug-grid">
                 <div class="drug-card">
@@ -984,42 +1526,892 @@
                     <p class="drug-generic">Generic: Nivolumab</p>
                     <div class="drug-info">
                         <p><strong>Type:</strong> PD-1 Inhibitor</p>
-                        <p><strong>Use:</strong> Melanoma, lung cancer</p>
+                        <p><strong>Use:</strong> Melanoma, lung cancer, renal cell carcinoma</p>
                     </div>
                     <a href="https://www.google.com/search?q=Opdivo+nivolumab" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Tecentriq</h3>
+                    <p class="drug-generic">Generic: Atezolizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PD-L1 Inhibitor</p>
+                        <p><strong>Use:</strong> Bladder cancer, lung cancer, breast cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Tecentriq+atezolizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Herceptin</h3>
+                    <p class="drug-generic">Generic: Trastuzumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> HER2 Inhibitor</p>
+                        <p><strong>Use:</strong> HER2+ breast cancer, gastric cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Herceptin+trastuzumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Avastin</h3>
+                    <p class="drug-generic">Generic: Bevacizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> VEGF Inhibitor</p>
+                        <p><strong>Use:</strong> Colorectal cancer, lung cancer, glioblastoma</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Avastin+bevacizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Rituxan</h3>
+                    <p class="drug-generic">Generic: Rituximab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CD20 Inhibitor</p>
+                        <p><strong>Use:</strong> Non-Hodgkin lymphoma, CLL, RA</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Rituxan+rituximab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Perjeta</h3>
+                    <p class="drug-generic">Generic: Pertuzumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> HER2 Inhibitor</p>
+                        <p><strong>Use:</strong> HER2+ breast cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Perjeta+pertuzumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Imbruvica</h3>
+                    <p class="drug-generic">Generic: Ibrutinib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> BTK Inhibitor</p>
+                        <p><strong>Use:</strong> CLL, mantle cell lymphoma</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Imbruvica+ibrutinib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Lynparza</h3>
+                    <p class="drug-generic">Generic: Olaparib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PARP Inhibitor</p>
+                        <p><strong>Use:</strong> Ovarian, breast, prostate cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Lynparza+olaparib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Tagrisso</h3>
+                    <p class="drug-generic">Generic: Osimertinib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> EGFR Inhibitor</p>
+                        <p><strong>Use:</strong> EGFR+ non-small cell lung cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Tagrisso+osimertinib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Kisqali</h3>
+                    <p class="drug-generic">Generic: Ribociclib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CDK4/6 Inhibitor</p>
+                        <p><strong>Use:</strong> HR+/HER2- breast cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Kisqali+ribociclib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Ibrance</h3>
+                    <p class="drug-generic">Generic: Palbociclib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CDK4/6 Inhibitor</p>
+                        <p><strong>Use:</strong> Breast cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Ibrance+palbociclib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Yervoy</h3>
+                    <p class="drug-generic">Generic: Ipilimumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CTLA-4 Inhibitor</p>
+                        <p><strong>Use:</strong> Melanoma, renal cell carcinoma</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Yervoy+ipilimumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
                     </a>
                 </div>
             </div>
         </div>
 
-        <div id="cardiovascular" class="tab-content">
+        <!-- Cardiovascular Drugs -->
+        <div id="cardio" class="tab-content">
             <div class="drug-grid">
                 <div class="drug-card">
                     <h3 class="drug-name">Xarelto</h3>
                     <p class="drug-generic">Generic: Rivaroxaban</p>
                     <div class="drug-info">
-                        <p><strong>Type:</strong> Anticoagulant</p>
-                        <p><strong>Use:</strong> Stroke prevention</p>
+                        <p><strong>Type:</strong> Factor Xa Inhibitor</p>
+                        <p><strong>Use:</strong> Stroke prevention, DVT/PE</p>
                     </div>
                     <a href="https://www.google.com/search?q=Xarelto+rivaroxaban" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Entresto</h3>
+                    <p class="drug-generic">Generic: Sacubitril/Valsartan</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> ARNI</p>
+                        <p><strong>Use:</strong> Heart failure with reduced ejection fraction</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Entresto+sacubitril+valsartan" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Brilinta</h3>
+                    <p class="drug-generic">Generic: Ticagrelor</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> P2Y12 Inhibitor</p>
+                        <p><strong>Use:</strong> Acute coronary syndrome</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Brilinta+ticagrelor" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Farxiga</h3>
+                    <p class="drug-generic">Generic: Dapagliflozin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> SGLT2 Inhibitor</p>
+                        <p><strong>Use:</strong> Heart failure, diabetes, CKD</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Farxiga+dapagliflozin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Repatha</h3>
+                    <p class="drug-generic">Generic: Evolocumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PCSK9 Inhibitor</p>
+                        <p><strong>Use:</strong> High cholesterol, cardiovascular disease</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Repatha+evolocumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Praluent</h3>
+                    <p class="drug-generic">Generic: Alirocumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PCSK9 Inhibitor</p>
+                        <p><strong>Use:</strong> High cholesterol</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Praluent+alirocumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Lipitor</h3>
+                    <p class="drug-generic">Generic: Atorvastatin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Statin</p>
+                        <p><strong>Use:</strong> High cholesterol, cardiovascular prevention</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Lipitor+atorvastatin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Crestor</h3>
+                    <p class="drug-generic">Generic: Rosuvastatin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Statin</p>
+                        <p><strong>Use:</strong> High cholesterol</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Crestor+rosuvastatin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Norvasc</h3>
+                    <p class="drug-generic">Generic: Amlodipine</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Calcium Channel Blocker</p>
+                        <p><strong>Use:</strong> Hypertension, angina</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Norvasc+amlodipine" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Metoprolol</h3>
+                    <p class="drug-generic">Generic: Metoprolol Succinate/Tartrate</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Beta Blocker</p>
+                        <p><strong>Use:</strong> Hypertension, heart failure, angina</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Metoprolol" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
                     </a>
                 </div>
             </div>
         </div>
 
+        <!-- Diabetes Drugs -->
         <div id="diabetes" class="tab-content">
             <div class="drug-grid">
                 <div class="drug-card">
-                    <h3 class="drug-name">Mounjaro</h3>
-                    <p class="drug-generic">Generic: Tirzepatide</p>
+                    <h3 class="drug-name">Trulicity</h3>
+                    <p class="drug-generic">Generic: Dulaglutide</p>
                     <div class="drug-info">
-                        <p><strong>Type:</strong> GLP-1/GIP Agonist</p>
+                        <p><strong>Type:</strong> GLP-1 Agonist</p>
                         <p><strong>Use:</strong> Type 2 diabetes</p>
                     </div>
-                    <a href="https://www.google.com/search?q=Mounjaro+tirzepatide" target="_blank" class="google-link">
-                        <i class="fab fa-google"></i> Search on Google
+                    <a href="https://www.google.com/search?q=Trulicity+dulaglutide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Victoza</h3>
+                    <p class="drug-generic">Generic: Liraglutide</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> GLP-1 Agonist</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Victoza+liraglutide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Rybelsus</h3>
+                    <p class="drug-generic">Generic: Semaglutide (oral)</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> GLP-1 Agonist (oral)</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Rybelsus+semaglutide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Januvia</h3>
+                    <p class="drug-generic">Generic: Sitagliptin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> DPP-4 Inhibitor</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Januvia+sitagliptin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Invokana</h3>
+                    <p class="drug-generic">Generic: Canagliflozin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> SGLT2 Inhibitor</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Invokana+canagliflozin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Tradjenta</h3>
+                    <p class="drug-generic">Generic: Linagliptin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> DPP-4 Inhibitor</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Tradjenta+linagliptin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Actos</h3>
+                    <p class="drug-generic">Generic: Pioglitazone</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Thiazolidinedione</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Actos+pioglitazone" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Glucophage</h3>
+                    <p class="drug-generic">Generic: Metformin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Biguanide</p>
+                        <p><strong>Use:</strong> Type 2 diabetes (first-line)</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Glucophage+metformin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Wegovy</h3>
+                    <p class="drug-generic">Generic: Semaglutide</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> GLP-1 Agonist</p>
+                        <p><strong>Use:</strong> Weight management, obesity</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Wegovy+semaglutide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Saxenda</h3>
+                    <p class="drug-generic">Generic: Liraglutide</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> GLP-1 Agonist</p>
+                        <p><strong>Use:</strong> Weight management</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Saxenda+liraglutide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Neurology Drugs -->
+        <div id="neurology" class="tab-content">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Ocrevus</h3>
+                    <p class="drug-generic">Generic: Ocrelizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CD20 Inhibitor</p>
+                        <p><strong>Use:</strong> Multiple sclerosis (relapsing & primary progressive)</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Ocrevus+ocrelizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Kesimpta</h3>
+                    <p class="drug-generic">Generic: Ofatumumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CD20 Inhibitor</p>
+                        <p><strong>Use:</strong> Relapsing multiple sclerosis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Kesimpta+ofatumumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Aimovig</h3>
+                    <p class="drug-generic">Generic: Erenumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CGRP Inhibitor</p>
+                        <p><strong>Use:</strong> Migraine prevention</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Aimovig+erenumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Emgality</h3>
+                    <p class="drug-generic">Generic: Galcanezumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CGRP Inhibitor</p>
+                        <p><strong>Use:</strong> Migraine prevention</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Emgality+galcanezumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Ajovy</h3>
+                    <p class="drug-generic">Generic: Fremanezumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CGRP Inhibitor</p>
+                        <p><strong>Use:</strong> Migraine prevention</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Ajovy+fremanezumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Nurtec ODT</h3>
+                    <p class="drug-generic">Generic: Rimegepant</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CGRP Antagonist</p>
+                        <p><strong>Use:</strong> Acute migraine treatment</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Nurtec+rimegepant" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Xcopri</h3>
+                    <p class="drug-generic">Generic: Cenobamate</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Anticonvulsant</p>
+                        <p><strong>Use:</strong> Partial-onset seizures</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Xcopri+cenobamate" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Aduhelm</h3>
+                    <p class="drug-generic">Generic: Aducanumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Amyloid Beta Inhibitor</p>
+                        <p><strong>Use:</strong> Alzheimer's disease</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Aduhelm+aducanumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Leqembi</h3>
+                    <p class="drug-generic">Generic: Lecanemab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Amyloid Beta Inhibitor</p>
+                        <p><strong>Use:</strong> Alzheimer's disease</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Leqembi+lecanemab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Sinemet</h3>
+                    <p class="drug-generic">Generic: Carbidopa/Levodopa</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Dopamine Precursor</p>
+                        <p><strong>Use:</strong> Parkinson's disease</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Sinemet+carbidopa+levodopa" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Immunology Drugs -->
+        <div id="immunology" class="tab-content">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Cosentyx</h3>
+                    <p class="drug-generic">Generic: Secukinumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> IL-17A Inhibitor</p>
+                        <p><strong>Use:</strong> Psoriasis, psoriatic arthritis, ankylosing spondylitis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Cosentyx+secukinumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Taltz</h3>
+                    <p class="drug-generic">Generic: Ixekizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> IL-17A Inhibitor</p>
+                        <p><strong>Use:</strong> Psoriasis, psoriatic arthritis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Taltz+ixekizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Tremfya</h3>
+                    <p class="drug-generic">Generic: Guselkumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> IL-23 Inhibitor</p>
+                        <p><strong>Use:</strong> Psoriasis, psoriatic arthritis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Tremfya+guselkumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Rinvoq</h3>
+                    <p class="drug-generic">Generic: Upadacitinib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> JAK Inhibitor</p>
+                        <p><strong>Use:</strong> Rheumatoid arthritis, psoriatic arthritis, UC</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Rinvoq+upadacitinib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Xeljanz</h3>
+                    <p class="drug-generic">Generic: Tofacitinib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> JAK Inhibitor</p>
+                        <p><strong>Use:</strong> Rheumatoid arthritis, UC, psoriatic arthritis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Xeljanz+tofacitinib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Olumiant</h3>
+                    <p class="drug-generic">Generic: Baricitinib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> JAK Inhibitor</p>
+                        <p><strong>Use:</strong> Rheumatoid arthritis, alopecia areata</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Olumiant+baricitinib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Cimzia</h3>
+                    <p class="drug-generic">Generic: Certolizumab pegol</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> TNF Inhibitor</p>
+                        <p><strong>Use:</strong> Crohn's disease, rheumatoid arthritis, psoriasis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Cimzia+certolizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Simponi</h3>
+                    <p class="drug-generic">Generic: Golimumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> TNF Inhibitor</p>
+                        <p><strong>Use:</strong> Rheumatoid arthritis, UC, psoriatic arthritis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Simponi+golimumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Actemra</h3>
+                    <p class="drug-generic">Generic: Tocilizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> IL-6 Inhibitor</p>
+                        <p><strong>Use:</strong> Rheumatoid arthritis, giant cell arteritis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Actemra+tocilizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Benlysta</h3>
+                    <p class="drug-generic">Generic: Belimumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> BLyS Inhibitor</p>
+                        <p><strong>Use:</strong> Systemic lupus erythematosus</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Benlysta+belimumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infectious Disease Drugs -->
+        <div id="infectious" class="tab-content">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Biktarvy</h3>
+                    <p class="drug-generic">Generic: Bictegravir/Emtricitabine/Tenofovir</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Antiretroviral (HIV)</p>
+                        <p><strong>Use:</strong> HIV-1 infection</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Biktarvy" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Descovy</h3>
+                    <p class="drug-generic">Generic: Emtricitabine/Tenofovir Alafenamide</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Antiretroviral/PrEP</p>
+                        <p><strong>Use:</strong> HIV treatment and prevention</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Descovy" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Genvoya</h3>
+                    <p class="drug-generic">Generic: Elvitegravir/Cobicistat/Emtricitabine/Tenofovir</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Antiretroviral (HIV)</p>
+                        <p><strong>Use:</strong> HIV-1 infection</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Genvoya" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Odefsey</h3>
+                    <p class="drug-generic">Generic: Emtricitabine/Rilpivirine/Tenofovir</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Antiretroviral (HIV)</p>
+                        <p><strong>Use:</strong> HIV-1 infection</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Odefsey" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Harvoni</h3>
+                    <p class="drug-generic">Generic: Ledipasvir/Sofosbuvir</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Direct-Acting Antiviral</p>
+                        <p><strong>Use:</strong> Hepatitis C</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Harvoni" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Epclusa</h3>
+                    <p class="drug-generic">Generic: Sofosbuvir/Velpatasvir</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Direct-Acting Antiviral</p>
+                        <p><strong>Use:</strong> Hepatitis C (all genotypes)</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Epclusa" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Mavyret</h3>
+                    <p class="drug-generic">Generic: Glecaprevir/Pibrentasvir</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Direct-Acting Antiviral</p>
+                        <p><strong>Use:</strong> Hepatitis C</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Mavyret" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Vosevi</h3>
+                    <p class="drug-generic">Generic: Sofosbuvir/Velpatasvir/Voxilaprevir</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Direct-Acting Antiviral</p>
+                        <p><strong>Use:</strong> Hepatitis C (retreatment)</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Vosevi" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Paxlovid</h3>
+                    <p class="drug-generic">Generic: Nirmatrelvir/Ritonavir</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Antiviral</p>
+                        <p><strong>Use:</strong> COVID-19 treatment</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Paxlovid" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Remdesivir</h3>
+                    <p class="drug-generic">Generic: Remdesivir (Veklury)</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Antiviral</p>
+                        <p><strong>Use:</strong> COVID-19, Ebola</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Remdesivir+Veklury" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Respiratory Drugs -->
+        <div id="respiratory" class="tab-content">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Trelegy Ellipta</h3>
+                    <p class="drug-generic">Generic: Fluticasone/Umeclidinium/Vilanterol</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Triple Therapy (ICS/LAMA/LABA)</p>
+                        <p><strong>Use:</strong> COPD, asthma</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Trelegy+Ellipta" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Breztri Aerosphere</h3>
+                    <p class="drug-generic">Generic: Budesonide/Glycopyrrolate/Formoterol</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Triple Therapy (ICS/LAMA/LABA)</p>
+                        <p><strong>Use:</strong> COPD</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Breztri+Aerosphere" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Nucala</h3>
+                    <p class="drug-generic">Generic: Mepolizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> IL-5 Inhibitor</p>
+                        <p><strong>Use:</strong> Severe asthma, eosinophilic granulomatosis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Nucala+mepolizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Fasenra</h3>
+                    <p class="drug-generic">Generic: Benralizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> IL-5 Receptor Inhibitor</p>
+                        <p><strong>Use:</strong> Severe eosinophilic asthma</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Fasenra+benralizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Daliresp</h3>
+                    <p class="drug-generic">Generic: Roflumilast</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PDE4 Inhibitor</p>
+                        <p><strong>Use:</strong> Severe COPD</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Daliresp+roflumilast" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Spiriva</h3>
+                    <p class="drug-generic">Generic: Tiotropium</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> LAMA</p>
+                        <p><strong>Use:</strong> COPD, asthma</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Spiriva+tiotropium" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Advair</h3>
+                    <p class="drug-generic">Generic: Fluticasone/Salmeterol</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> ICS/LABA</p>
+                        <p><strong>Use:</strong> Asthma, COPD</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Advair" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Symbicort</h3>
+                    <p class="drug-generic">Generic: Budesonide/Formoterol</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> ICS/LABA</p>
+                        <p><strong>Use:</strong> Asthma, COPD</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Symbicort" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Breo Ellipta</h3>
+                    <p class="drug-generic">Generic: Fluticasone/Vilanterol</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> ICS/LABA</p>
+                        <p><strong>Use:</strong> Asthma, COPD</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Breo+Ellipta" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Anoro Ellipta</h3>
+                    <p class="drug-generic">Generic: Umeclidinium/Vilanterol</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> LAMA/LABA</p>
+                        <p><strong>Use:</strong> COPD</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Anoro+Ellipta" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search
                     </a>
                 </div>
             </div>
@@ -1028,17 +2420,295 @@
 
     <!-- Footer -->
     <footer>
-        <div class="divider">❦ ❧ </div>
-        <p style="font-size: 1.3rem; margin-bottom: 1rem;">&copy; 2026 Veloce Biotechnology</p>
-        <p style="font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--gold);">
-            "Where Elegance Meets Innovation in Life Sciences"
-        </p>
-        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
-            A most distinguished establishment for pharmaceutical excellence
+        <div class="divider">❦ 🧬 </div>
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;">&copy; 2026 Veloce Biotechnology</p>
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin: 1rem 0;">
+            "Excellence in Pharmaceutical Information"
         </p>
     </footer>
 
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCart()">&times;</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; background: linear-gradient(135deg, var(--gold-dark), var(--dusty-rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 2rem; text-align: center;">
+                Your Cart
+            </h2>
+            <div id="cartItems"></div>
+            <div class="cart-total" id="cartTotal">Total: $0</div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePayment()">&times;</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; background: linear-gradient(135deg, var(--gold-dark), var(--dusty-rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; text-align: center;">
+                Payment
+            </h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">Choose your preferred payment method</p>
+            
+            <div class="payment-methods">
+                <div class="payment-method active" onclick="selectPayment('card')">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Credit/Debit Card</span>
+                </div>
+                <div class="payment-method" onclick="selectPayment('upi')">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>UPI Payment</span>
+                </div>
+            </div>
+
+            <!-- Credit Card Form -->
+            <div id="cardForm" class="payment-form active">
+                <div class="form-group">
+                    <label>Cardholder Name</label>
+                    <input type="text" id="cardName" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Expiry Date</label>
+                        <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" id="cardCVV" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+                <button class="pay-now-btn" onclick="processPayment()">
+                    <i class="fas fa-lock"></i> Pay Now
+                </button>
+            </div>
+
+            <!-- UPI Form -->
+            <div id="upiForm" class="payment-form">
+                <div class="form-group">
+                    <label>UPI ID</label>
+                    <input type="text" id="upiId" placeholder="yourname@upi" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm UPI ID</label>
+                    <input type="text" id="upiIdConfirm" placeholder="yourname@upi" required>
+                </div>
+                <div style="background: var(--soft-pink); padding: 1rem; border-radius: 10px; margin: 1.5rem 0; font-size: 0.95rem;">
+                    <i class="fas fa-info-circle" style="color: var(--gold-dark); margin-right: 0.5rem;"></i>
+                    You will receive a payment request on your UPI app. Please approve to complete the transaction.
+                </div>
+                <button class="pay-now-btn" onclick="processUP Payment()">
+                    <i class="fas fa-mobile-alt"></i> Pay via UPI
+                </button>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Payment Successful!</h2>
+                <p>Thank you for your purchase. Your subscription is now active.</p>
+                <div class="order-id" id="orderId"></div>
+                <p style="margin-top: 1.5rem; font-size: 1rem;">A confirmation email has been sent to your registered email address.</p>
+                <button class="purchase-btn" onclick="closePayment()" style="margin-top: 2rem;">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Music Player
+        const music = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicToggle.innerHTML = '<i class="fas fa-play music-note"></i>';
+            } else {
+                music.play();
+                musicToggle.innerHTML = '<i class="fas fa-pause music-note"></i>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Shopping Cart
+        let cart = [];
+        
+        function addToCart(plan, price) {
+            cart.push({ plan, price });
+            updateCartCount();
+            
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Added! ✓';
+            btn.style.background = '#4CAF50';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 2000);
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        function openCart() {
+            const modal = document.getElementById('cartModal');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; padding: 2rem; font-size: 1.2rem; color: var(--text-light);">Your cart is empty</p>';
+                cartTotal.textContent = 'Total: $0';
+            } else {
+                let html = '';
+                let total = 0;
+                cart.forEach((item, index) => {
+                    total += item.price;
+                    html += `
+                        <div class="cart-item">
+                            <div>
+                                <strong style="font-size: 1.2rem; color: var(--gold-dark);">${item.plan}</strong>
+                                <p style="color: var(--text-light);">Monthly Subscription</p>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.3rem; font-weight: 700; color: var(--gold-dark);">$${item.price}</span>
+                                <button onclick="removeFromCart(${index})" style="background: none; border: none; color: var(--dusty-rose); cursor: pointer; font-size: 1.3rem;">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                cartItems.innerHTML = html;
+                cartTotal.textContent = `Total: $${total}/month`;
+            }
+            
+            modal.style.display = 'flex';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            openCart();
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            closeCart();
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePayment() {
+            document.getElementById('paymentModal').style.display = 'none';
+            // Reset forms
+            document.getElementById('successMessage').classList.remove('active');
+            document.getElementById('cardForm').style.display = 'block';
+            document.getElementById('upiForm').style.display = 'none';
+            // Clear cart
+            cart = [];
+            updateCartCount();
+        }
+
+        function selectPayment(method) {
+            // Update active state
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            // Show corresponding form
+            if (method === 'card') {
+                document.getElementById('cardForm').classList.add('active');
+                document.getElementById('upiForm').classList.remove('active');
+            } else {
+                document.getElementById('cardForm').classList.remove('active');
+                document.getElementById('upiForm').classList.add('active');
+            }
+        }
+
+        function processPayment() {
+            // Validate card details
+            const cardName = document.getElementById('cardName').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const cardExpiry = document.getElementById('cardExpiry').value;
+            const cardCVV = document.getElementById('cardCVV').value;
+
+            if (!cardName || !cardNumber || !cardExpiry || !cardCVV) {
+                alert('Please fill in all card details');
+                return;
+            }
+
+            // Simulate payment processing
+            const btn = event.currentTarget;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                // Generate order ID
+                const orderId = 'VEL-' + Date.now();
+                document.getElementById('orderId').textContent = 'Order ID: ' + orderId;
+                
+                // Show success message
+                document.getElementById('cardForm').style.display = 'none';
+                document.getElementById('upiForm').style.display = 'none';
+                document.querySelector('.payment-methods').style.display = 'none';
+                document.getElementById('successMessage').classList.add('active');
+                
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 2000);
+        }
+
+        function processUP Payment() {
+            // Validate UPI ID
+            const upiId = document.getElementById('upiId').value;
+            const upiIdConfirm = document.getElementById('upiIdConfirm').value;
+
+            if (!upiId || !upiIdConfirm) {
+                alert('Please fill in UPI ID details');
+                return;
+            }
+
+            if (upiId !== upiIdConfirm) {
+                alert('UPI IDs do not match');
+                return;
+            }
+
+            // Simulate UPI payment
+            const btn = event.currentTarget;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Waiting for payment...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                // Generate order ID
+                const orderId = 'VEL-' + Date.now();
+                document.getElementById('orderId').textContent = 'Order ID: ' + orderId;
+                
+                // Show success message
+                document.getElementById('cardForm').style.display = 'none';
+                document.getElementById('upiForm').style.display = 'none';
+                document.querySelector('.payment-methods').style.display = 'none';
+                document.getElementById('successMessage').classList.add('active');
+                
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 3000);
+        }
+
         // Tab Functionality
         function openTab(tabName) {
             const contents = document.getElementsByClassName('tab-content');
@@ -1055,39 +2725,33 @@
             event.currentTarget.classList.add('active');
         }
 
-        // Search Functionality
+        // Search
         function performSearch() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const searchTerm = document.getElementById('searchInput').value;
             if (!searchTerm) {
-                alert('Pray, enter a search term');
+                alert('Please enter a search term');
                 return;
             }
-            
-            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm + ' biotechnology drug')}`;
-            window.open(googleSearchUrl, '_blank');
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`, '_blank');
         }
 
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
+            if (e.key === 'Enter') performSearch();
+        });
+
+        // Close modals on outside click
+        window.onclick = function(event) {
+            const cartModal = document.getElementById('cartModal');
+            const paymentModal = document.getElementById('paymentModal');
+            if (event.target === cartModal) {
+                closeCart();
             }
-        });
+            if (event.target === paymentModal) {
+                closePayment();
+            }
+        }
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Animation on scroll
+        // Scroll animations
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1098,13 +2762,40 @@
         }, { threshold: 0.1 });
 
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.drug-card, .biotech-card');
+            const cards = document.querySelectorAll('.drug-card, .biotech-card, .pricing-card');
             cards.forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
             });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Format card number with spaces
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+
+        // Format expiry date
+        document.getElementById('cardExpiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
         });
     </script>
 </body>
