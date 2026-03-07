@@ -1,65 +1,1272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Veloce Biotechnology</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veloce Biotechnology - Comprehensive Database</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --soft-pink: #F8E8E8;
+            --dusty-rose: #D4A5A5;
+            --cream: #FFF8F0;
+            --gold: #C9A961;
+            --gold-dark: #A68B4B;
+            --text-dark: #4A4A4A;
+            --text-light: #7A7A7A;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(180deg, var(--soft-pink) 0%, var(--cream) 100%);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold-dark);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-dark);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        /* Search Bar */
+        .search-container {
+            padding: 3rem 5%;
+            background: linear-gradient(135deg, var(--soft-pink) 0%, var(--cream) 100%);
+            text-align: center;
+        }
+
+        .search-box {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1.2rem 3rem 1.2rem 1.5rem;
+            font-size: 1.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            outline: none;
+            background: var(--white);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gold);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            color: var(--white);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background: var(--gold-dark);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 4rem 5%;
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--gold-dark);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '❧';
+            display: block;
+            font-size: 2rem;
+            color: var(--dusty-rose);
+            margin-top: 0.5rem;
+        }
+
+        /* Category Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            background: var(--white);
+            border: 2px solid var(--gold);
+            color: var(--gold-dark);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: var(--gold);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Drug Cards */
+        .drug-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .drug-card {
+            background: var(--white);
+            border: 2px solid var(--soft-pink);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drug-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold), var(--dusty-rose));
+        }
+
+        .drug-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+            border-color: var(--gold);
+        }
+
+        .drug-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .drug-generic {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--dusty-rose);
+        }
+
+        .drug-info {
+            margin: 1rem 0;
+        }
+
+        .drug-info p {
+            margin: 0.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .drug-info strong {
+            color: var(--gold-dark);
+        }
+
+        .google-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: var(--soft-pink);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .google-link:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        /* Biotech Categories */
+        .biotech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .biotech-card {
+            background: linear-gradient(135deg, var(--white) 0%, var(--soft-pink) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .biotech-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(201, 169, 97, 0.4);
+        }
+
+        .biotech-icon {
+            font-size: 3.5rem;
+            color: var(--gold-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .biotech-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
+        }
+
+        .biotech-card ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .biotech-card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .biotech-card ul li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            margin: 0.3rem;
+            background: var(--white);
+            border: 1px solid var(--dusty-rose);
+            color: var(--text-dark);
+            font-family: 'Cormorant Garamond', serif;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--dusty-rose);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--cream);
+            padding: 3rem 5%;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .drug-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🌹 Veloce Bio</div>
+        <ul class="nav-links">
+            <li><a href="#biotech">Biotechnology</a></li>
+            <li><a href="#drugs">Drug Database</a></li>
+            <li><a href="#therapeutics">Therapeutics</a></li>
+            <li><a href="#search">Search</a></li>
+        </ul>
+    </nav>
 
-<header>
+    <!-- Search Section -->
+    <section class="search-container" id="search">
+        <h2 class="section-title">Search Our Database</h2>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search for drugs, biotechnology, or therapeutic areas...">
+            <button onclick="performSearch()">Search</button>
+        </div>
+    </section>
 
-<h1>🧬 Veloce Biotechnology</h1>
+    <!-- Biotechnology Categories -->
+    <section class="section" id="biotech">
+        <h2 class="section-title">Biotechnology Categories</h2>
+        
+        <div class="biotech-grid">
+            <div class="biotech-card">
+                <div class="biotech-icon">🧬</div>
+                <h3>Genetic Engineering</h3>
+                <p>Manipulation of DNA to create modified organisms and therapeutic products</p>
+                <ul>
+                    <li>Recombinant DNA Technology</li>
+                    <li>CRISPR-Cas9 Gene Editing</li>
+                    <li>Gene Cloning</li>
+                    <li>Transgenic Organisms</li>
+                    <li>Synthetic Biology</li>
+                </ul>
+                <a href="https://www.google.com/search?q=genetic+engineering+biotechnology" target="_blank" class="google-link">
+                    <i class="fab fa-google"></i> Learn More
+                </a>
+            </div>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="biotechnology.html">Biotechnology</a>
-<a href="pharmaceuticals.html">Pharmaceuticals</a>
-<a href="drugs.html">Drug Database</a>
-<a href="contact.html">Contact</a>
-</nav>
+            <div class="biotech-card">
+                <div class="biotech-icon">💉</div>
+                <h3>Monoclonal Antibodies</h3>
+                <p>Laboratory-produced molecules engineered to serve as substitute antibodies</p>
+                <ul>
+                    <li>Cancer Immunotherapy</li>
+                    <li>Autoimmune Disease Treatment</li>
+                    <li>Infectious Disease Therapy</li>
+                    <li>Diagnostic Applications</li>
+                    <li>Biosimilars</li>
+                </ul>
+                <a href="https://www.google.com/search?q=monoclonal+antibodies+therapy" target="_blank" class="google-link">
+                    <i class="fab fa-google"></i> Learn More
+                </a>
+            </div>
 
-</header>
+            <div class="biotech-card">
+                <div class="biotech-icon">🧪</div>
+                <h3>Gene Therapy</h3>
+                <p>Treating diseases by modifying or manipulating gene expression</p>
+                <ul>
+                    <li>CAR-T Cell Therapy</li>
+                    <li>Gene Replacement</li>
+                    <li>Gene Silencing</li>
+                    <li>In Vivo Gene Therapy</li>
+                    <li>Ex Vivo Gene Therapy</li>
+                </ul>
+                <a href="https://www.google.com/search?q=gene+therapy+treatments" target="_blank" class="google-link">
+                    <i class="fab fa-google"></i> Learn More
+                </a>
+            </div>
 
-<section class="hero">
+            <div class="biotech-card">
+                <div class="biotech-icon"></div>
+                <h3>Vaccine Development</h3>
+                <p>Creating immunizations to prevent infectious diseases</p>
+                <ul>
+                    <li>mRNA Vaccines</li>
+                    <li>Viral Vector Vaccines</li>
+                    <li>Protein Subunit Vaccines</li>
+                    <li>Live Attenuated Vaccines</li>
+                    <li>DNA Vaccines</li>
+                </ul>
+                <a href="https://www.google.com/search?q=biotechnology+vaccine+development" target="_blank" class="google-link">
+                    <i class="fab fa-google"></i> Learn More
+                </a>
+            </div>
 
-<h2>Where Science Meets Elegance</h2>
+            <div class="biotech-card">
+                <div class="biotech-icon">🔬</div>
+                <h3>Diagnostics</h3>
+                <p>Biotechnological tools for disease detection and monitoring</p>
+                <ul>
+                    <li>PCR Testing</li>
+                    <li>Biomarker Detection</li>
+                    <li>Genetic Testing</li>
+                    <li>Point-of-Care Diagnostics</li>
+                    <li>Next-Generation Sequencing</li>
+                </ul>
+                <a href="https://www.google.com/search?q=biotechnology+diagnostics" target="_blank" class="google-link">
+                    <i class="fab fa-google"></i> Learn More
+                </a>
+            </div>
 
-<p>
-Advancing biotechnology, pharmaceuticals, and AI-driven medicine
-to create the next generation of therapeutics.
-</p>
+            <div class="biotech-card">
+                <div class="biotech-icon">🌱</div>
+                <h3>Agricultural Biotech</h3>
+                <p>Using biotechnology to improve crops and agricultural practices</p>
+                <ul>
+                    <li>Genetically Modified Crops</li>
+                    <li>Pest Resistance</li>
+                    <li>Drought Tolerance</li>
+                    <li>Nutritional Enhancement</li>
+                    <li>Biopesticides</li>
+                </ul>
+                <a href="https://www.google.com/search?q=agricultural+biotechnology" target="_blank" class="google-link">
+                    <i class="fab fa-google"></i> Learn More
+                </a>
+            </div>
 
-<button onclick="location.href='biotechnology.html'">
-Explore Our Science
-</button>
+            <div class="biotech-card">
+                <div class="biotech-icon">⚗️</div>
+                <h3>Industrial Biotechnology</h3>
+                <p>Using biological systems for industrial manufacturing</p>
+                <ul>
+                    <li>Biofuels Production</li>
+                    <li>Bioplastics</li>
+                    <li>Enzyme Production</li>
+                    <li>Bioremediation</li>
+                    <li>Fermentation Technology</li>
+                </ul>
+                <a href="https://www.google.com/search?q=industrial+biotechnology+applications" target="_blank" class="google-link">
+                    <i class="fab fa-google"></i> Learn More
+                </a>
+            </div>
 
-</section>
+            <div class="biotech-card">
+                <div class="biotech-icon">💊</div>
+                <h3>Biopharmaceuticals</h3>
+                <p>Medical drugs produced using biotechnology</p>
+                <ul>
+                    <li>Recombinant Proteins</li>
+                    <li>Therapeutic Enzymes</li>
+                    <li>Hormones</li>
+                    <li>Cytokines</li>
+                    <li>Growth Factors</li>
+                </ul>
+                <a href="https://www.google.com/search?q=biopharmaceuticals+drugs" target="_blank" class="google-link">
+                    <i class="fab fa-google"></i> Learn More
+                </a>
+            </div>
+        </div>
+    </section>
 
-<section class="grid">
+    <!-- Drug Database Section -->
+    <section class="section" id="drugs">
+        <h2 class="section-title">Comprehensive Drug Database</h2>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('topDrugs')">Top Selling Drugs</button>
+            <button class="tab-btn" onclick="openTab('monoclonal')">Monoclonal Antibodies</button>
+            <button class="tab-btn" onclick="openTab('geneTherapy')">Gene Therapies</button>
+            <button class="tab-btn" onclick="openTab('oncology')">Oncology</button>
+            <button class="tab-btn" onclick="openTab('cardiovascular')">Cardiovascular</button>
+            <button class="tab-btn" onclick="openTab('diabetes')">Diabetes</button>
+        </div>
 
-<div class="card">
-<h3>Gene Editing</h3>
-<p>CRISPR technologies and genomic engineering.</p>
-</div>
+        <!-- Top Selling Drugs -->
+        <div id="topDrugs" class="tab-content active">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Keytruda</h3>
+                    <p class="drug-generic">Generic: Pembrolizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Merck & Co.</p>
+                        <p><strong>Category:</strong> Oncology Immunotherapy</p>
+                        <p><strong>2024 Sales:</strong> $29.48 billion</p>
+                        <p><strong>Use:</strong> Cancer treatment (PD-1 inhibitor)</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Keytruda+pembrolizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
 
-<div class="card">
-<h3>AI Drug Discovery</h3>
-<p>Machine learning models designing new medicines.</p>
-</div>
+                <div class="drug-card">
+                    <h3 class="drug-name">Ozempic</h3>
+                    <p class="drug-generic">Generic: Semaglutide</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Novo Nordisk</p>
+                        <p><strong>Category:</strong> Diabetes/Weight Management</p>
+                        <p><strong>2024 Sales:</strong> $17.55 billion</p>
+                        <p><strong>Use:</strong> Type 2 diabetes, weight loss</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Ozempic+semaglutide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
 
-<div class="card">
-<h3>Pharmaceutical Manufacturing</h3>
-<p>OSD, capsules, injections and biologics.</p>
-</div>
+                <div class="drug-card">
+                    <h3 class="drug-name">Eliquis</h3>
+                    <p class="drug-generic">Generic: Apixaban</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Bristol Myers Squibb/Pfizer</p>
+                        <p><strong>Category:</strong> Cardiovascular/Anticoagulant</p>
+                        <p><strong>2024 Sales:</strong> $13.2 billion</p>
+                        <p><strong>Use:</strong> Blood thinner, stroke prevention</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Eliquis+apixaban" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
 
-</section>
+                <div class="drug-card">
+                    <h3 class="drug-name">Dupixent</h3>
+                    <p class="drug-generic">Generic: Dupilumab</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Sanofi/Regeneron</p>
+                        <p><strong>Category:</strong> Immunology</p>
+                        <p><strong>2024 Sales:</strong> $12.8 billion</p>
+                        <p><strong>Use:</strong> Eczema, asthma, sinusitis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Dupixent+dupilumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
 
-<footer>
-© 2026 Veloce Biotechnology
-</footer>
+                <div class="drug-card">
+                    <h3 class="drug-name">Skyrizi</h3>
+                    <p class="drug-generic">Generic: Risankizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> AbbVie</p>
+                        <p><strong>Category:</strong> Immunology</p>
+                        <p><strong>2024 Sales:</strong> $11.9 billion</p>
+                        <p><strong>Use:</strong> Psoriasis, Crohn's disease</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Skyrizi+risankizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
 
+                <div class="drug-card">
+                    <h3 class="drug-name">Mounjaro</h3>
+                    <p class="drug-generic">Generic: Tirzepatide</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Eli Lilly</p>
+                        <p><strong>Category:</strong> Diabetes/Weight Management</p>
+                        <p><strong>2024 Sales:</strong> $11.1 billion</p>
+                        <p><strong>Use:</strong> Type 2 diabetes, obesity</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Mounjaro+tirzepatide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Humira</h3>
+                    <p class="drug-generic">Generic: Adalimumab</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> AbbVie</p>
+                        <p><strong>Category:</strong> Immunology</p>
+                        <p><strong>Use:</strong> Rheumatoid arthritis, Crohn's</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Humira+adalimumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Jardiance</h3>
+                    <p class="drug-generic">Generic: Empagliflozin</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Boehringer Ingelheim/Lilly</p>
+                        <p><strong>Category:</strong> Diabetes/Cardiovascular</p>
+                        <p><strong>Use:</strong> Type 2 diabetes, heart failure</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Jardiance+empagliflozin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monoclonal Antibodies -->
+        <div id="monoclonal" class="tab-content">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Rituxan</h3>
+                    <p class="drug-generic">Generic: Rituximab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Anti-CD20</p>
+                        <p><strong>Use:</strong> Non-Hodgkin lymphoma, RA</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Rituxan+rituximab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Herceptin</h3>
+                    <p class="drug-generic">Generic: Trastuzumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Anti-HER2</p>
+                        <p><strong>Use:</strong> Breast cancer, gastric cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Herceptin+trastuzumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Avastin</h3>
+                    <p class="drug-generic">Generic: Bevacizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Anti-VEGF</p>
+                        <p><strong>Use:</strong> Colorectal cancer, lung cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Avastin+bevacizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Ocrevus</h3>
+                    <p class="drug-generic">Generic: Ocrelizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Anti-CD20</p>
+                        <p><strong>Use:</strong> Multiple sclerosis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Ocrevus+ocrelizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Perjeta</h3>
+                    <p class="drug-generic">Generic: Pertuzumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Anti-HER2</p>
+                        <p><strong>Use:</strong> Breast cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Perjeta+pertuzumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Tecentriq</h3>
+                    <p class="drug-generic">Generic: Atezolizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PD-L1 Inhibitor</p>
+                        <p><strong>Use:</strong> Various cancers</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Tecentriq+atezolizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Hemlibra</h3>
+                    <p class="drug-generic">Generic: Emicizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Bispecific antibody</p>
+                        <p><strong>Use:</strong> Hemophilia A</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Hemlibra+emicizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Cosentyx</h3>
+                    <p class="drug-generic">Generic: Secukinumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Anti-IL-17A</p>
+                        <p><strong>Use:</strong> Psoriasis, ankylosing spondylitis</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Cosentyx+secukinumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gene Therapy -->
+        <div id="geneTherapy" class="tab-content">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Zolgensma</h3>
+                    <p class="drug-generic">Generic: Onasemnogene abeparvovec</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Novartis</p>
+                        <p><strong>Use:</strong> Spinal muscular atrophy (SMA)</p>
+                        <p><strong>Type:</strong> Gene replacement</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Zolgensma+gene+therapy" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Luxturna</h3>
+                    <p class="drug-generic">Generic: Voretigene neparvovec</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Novartis</p>
+                        <p><strong>Use:</strong> Inherited retinal dystrophy</p>
+                        <p><strong>Type:</strong> Gene therapy</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Luxturna+gene+therapy" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Kymriah</h3>
+                    <p class="drug-generic">Generic: Tisagenlecleucel</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Novartis</p>
+                        <p><strong>Use:</strong> CAR-T for leukemia, lymphoma</p>
+                        <p><strong>Type:</strong> Cell therapy</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Kymriah+CAR-T+therapy" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Yescarta</h3>
+                    <p class="drug-generic">Generic: Axicabtagene ciloleucel</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Gilead/Kite</p>
+                        <p><strong>Use:</strong> CAR-T for lymphoma</p>
+                        <p><strong>Type:</strong> Cell therapy</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Yescarta+CAR-T" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Casgevy</h3>
+                    <p class="drug-generic">Generic: Exagamglogene autotemcel</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Vertex</p>
+                        <p><strong>Use:</strong> Sickle cell disease, beta-thalassemia</p>
+                        <p><strong>Type:</strong> CRISPR gene editing</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Casgevy+CRISPR+gene+therapy" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Hemgenix</h3>
+                    <p class="drug-generic">Generic: Etranacogene dezaparvovec</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> CSL Behring</p>
+                        <p><strong>Use:</strong> Hemophilia B</p>
+                        <p><strong>Type:</strong> Gene therapy</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Hemgenix+gene+therapy" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Skysona</h3>
+                    <p class="drug-generic">Generic: Elivaldogene autotemcel</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Bluebird Bio</p>
+                        <p><strong>Use:</strong> Cerebral adrenoleukodystrophy</p>
+                        <p><strong>Type:</strong> Gene therapy</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Skysona+gene+therapy" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Zynteglo</h3>
+                    <p class="drug-generic">Generic: Betibeglogene autotemcel</p>
+                    <div class="drug-info">
+                        <p><strong>Company:</strong> Bluebird Bio</p>
+                        <p><strong>Use:</strong> Beta-thalassemia</p>
+                        <p><strong>Type:</strong> Gene therapy</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Zynteglo+gene+therapy" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oncology Drugs -->
+        <div id="oncology" class="tab-content">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Opdivo</h3>
+                    <p class="drug-generic">Generic: Nivolumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PD-1 Inhibitor</p>
+                        <p><strong>Use:</strong> Melanoma, lung cancer, others</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Opdivo+nivolumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Keytruda</h3>
+                    <p class="drug-generic">Generic: Pembrolizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PD-1 Inhibitor</p>
+                        <p><strong>Use:</strong> Multiple cancer types</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Keytruda+pembrolizumab+cancer" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Tagrisso</h3>
+                    <p class="drug-generic">Generic: Osimertinib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> EGFR Inhibitor</p>
+                        <p><strong>Use:</strong> Non-small cell lung cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Tagrisso+osimertinib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Imbruvica</h3>
+                    <p class="drug-generic">Generic: Ibrutinib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> BTK Inhibitor</p>
+                        <p><strong>Use:</strong> CLL, mantle cell lymphoma</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Imbruvica+ibrutinib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Lynparza</h3>
+                    <p class="drug-generic">Generic: Olaparib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PARP Inhibitor</p>
+                        <p><strong>Use:</strong> Ovarian, breast, prostate cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Lynparza+olaparib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Kisqali</h3>
+                    <p class="drug-generic">Generic: Ribociclib</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> CDK4/6 Inhibitor</p>
+                        <p><strong>Use:</strong> Breast cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Kisqali+ribociclib" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Tecentriq</h3>
+                    <p class="drug-generic">Generic: Atezolizumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PD-L1 Inhibitor</p>
+                        <p><strong>Use:</strong> Bladder, lung, breast cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Tecentriq+atezolizumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Perjeta</h3>
+                    <p class="drug-generic">Generic: Pertuzumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> HER2 Inhibitor</p>
+                        <p><strong>Use:</strong> Breast cancer</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Perjeta+pertuzumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cardiovascular Drugs -->
+        <div id="cardiovascular" class="tab-content">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Eliquis</h3>
+                    <p class="drug-generic">Generic: Apixaban</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Anticoagulant (DOAC)</p>
+                        <p><strong>Use:</strong> Stroke prevention, DVT/PE</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Eliquis+apixaban" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Xarelto</h3>
+                    <p class="drug-generic">Generic: Rivaroxaban</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Anticoagulant (DOAC)</p>
+                        <p><strong>Use:</strong> Stroke prevention, DVT/PE</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Xarelto+rivaroxaban" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Entresto</h3>
+                    <p class="drug-generic">Generic: Sacubitril/Valsartan</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> ARNI</p>
+                        <p><strong>Use:</strong> Heart failure</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Entresto+sacubitril+valsartan" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Brilinta</h3>
+                    <p class="drug-generic">Generic: Ticagrelor</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> Antiplatelet</p>
+                        <p><strong>Use:</strong> Acute coronary syndrome</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Brilinta+ticagrelor" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Jardiance</h3>
+                    <p class="drug-generic">Generic: Empagliflozin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> SGLT2 Inhibitor</p>
+                        <p><strong>Use:</strong> Heart failure, diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Jardiance+empagliflozin+heart+failure" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Farxiga</h3>
+                    <p class="drug-generic">Generic: Dapagliflozin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> SGLT2 Inhibitor</p>
+                        <p><strong>Use:</strong> Heart failure, diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Farxiga+dapagliflozin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Repatha</h3>
+                    <p class="drug-generic">Generic: Evolocumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PCSK9 Inhibitor</p>
+                        <p><strong>Use:</strong> High cholesterol</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Repatha+evolocumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Praluent</h3>
+                    <p class="drug-generic">Generic: Alirocumab</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> PCSK9 Inhibitor</p>
+                        <p><strong>Use:</strong> High cholesterol</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Praluent+alirocumab" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diabetes Drugs -->
+        <div id="diabetes" class="tab-content">
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <h3 class="drug-name">Ozempic</h3>
+                    <p class="drug-generic">Generic: Semaglutide</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> GLP-1 Agonist</p>
+                        <p><strong>Use:</strong> Type 2 diabetes, weight loss</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Ozempic+semaglutide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Mounjaro</h3>
+                    <p class="drug-generic">Generic: Tirzepatide</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> GLP-1/GIP Agonist</p>
+                        <p><strong>Use:</strong> Type 2 diabetes, obesity</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Mounjaro+tirzepatide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Jardiance</h3>
+                    <p class="drug-generic">Generic: Empagliflozin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> SGLT2 Inhibitor</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Jardiance+empagliflozin+diabetes" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Trulicity</h3>
+                    <p class="drug-generic">Generic: Dulaglutide</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> GLP-1 Agonist</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Trulicity+dulaglutide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Victoza</h3>
+                    <p class="drug-generic">Generic: Liraglutide</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> GLP-1 Agonist</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Victoza+liraglutide" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Farxiga</h3>
+                    <p class="drug-generic">Generic: Dapagliflozin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> SGLT2 Inhibitor</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Farxiga+dapagliflozin+diabetes" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Rybelsus</h3>
+                    <p class="drug-generic">Generic: Semaglutide (oral)</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> GLP-1 Agonist (oral)</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Rybelsus+semaglutide+oral" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+
+                <div class="drug-card">
+                    <h3 class="drug-name">Januvia</h3>
+                    <p class="drug-generic">Generic: Sitagliptin</p>
+                    <div class="drug-info">
+                        <p><strong>Type:</strong> DPP-4 Inhibitor</p>
+                        <p><strong>Use:</strong> Type 2 diabetes</p>
+                    </div>
+                    <a href="https://www.google.com/search?q=Januvia+sitagliptin" target="_blank" class="google-link">
+                        <i class="fab fa-google"></i> Search on Google
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Veloce Biotechnology. All rights reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <em>"Where Elegance Meets Innovation in Life Sciences"</em>
+        </p>
+    </footer>
+
+    <script>
+        // Tab Functionality
+        function openTab(tabName) {
+            // Hide all tab contents
+            const contents = document.getElementsByClassName('tab-content');
+            for (let content of contents) {
+                content.classList.remove('active');
+            }
+            
+            // Remove active class from all buttons
+            const buttons = document.getElementsByClassName('tab-btn');
+            for (let btn of buttons) {
+                btn.classList.remove('active');
+            }
+            
+            // Show current tab and add active class to button
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Search Functionality
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            if (!searchTerm) {
+                alert('Please enter a search term');
+                return;
+            }
+            
+            // Open Google search in new tab
+            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm + ' biotechnology drug')}`;
+            window.open(googleSearchUrl, '_blank');
+        }
+
+        // Allow Enter key to trigger search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.drug-card, .biotech-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
